@@ -6,7 +6,7 @@ Eerik Poopuu
 Hannes Väster
 Kristjan Petersell
 Erik Brück
-Kristjan Peedisson
+Kristjan Peedissons
 
 Vaja teha:
 -blogi
