@@ -1,12 +1,12 @@
 # Test-Ryhm1
-Ryhm 1 test
+<h1>Ryhm 1 test</h1>
 
 liikmed: 
 Eerik Poopuu
 Hannes Väster
 Kristjan Petersell
 Erik Brück
-Kristjan Peedissons
+Kristjan Peedisson
 
 Vaja teha:
 -blogi
