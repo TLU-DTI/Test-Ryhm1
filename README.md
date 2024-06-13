@@ -1,6 +1,20 @@
 # Test-Ryhm1
 <h1>Ryhm 1 test</h1>
 
+
+<h2>How to run</h2>
+1. Open the folder TEST-RYHM1 in terminal
+2. Type 'cd mitigate-app'
+3. Install dependecies 
+```
+npm install
+```
+4. Start the development server
+```
+npm start
+```
+
+<br>
 liikmed: 
 Eerik Poopuu
 Hannes Väster
