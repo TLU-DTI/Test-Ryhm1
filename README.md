@@ -1,12 +1,26 @@
 # Test-Ryhm1
-Ryhm 1 test
+<h1>Ryhm 1 test</h1>
 
+
+<h2>How to run</h2>
+<ol>
+  <li><strong>Open the folder TEST-RYHM1 in terminal</strong></li>
+  <li><strong>Type 'cd mitigate-app'</strong></li>
+  <li><strong>Install dependencies:</strong>
+    <pre><code>npm install</code></pre>
+  </li>
+  <li><strong>Start the development server:</strong>
+    <pre><code>npm start</code></pre>
+  </li>
+</ol>
+
+<br>
 liikmed: 
 Eerik Poopuu
 Hannes Väster
 Kristjan Petersell
 Erik Brück
-Kristjan Peedissons
+Kristjan Peedisson
 
 Vaja teha:
 -blogi
