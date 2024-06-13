@@ -102,6 +102,14 @@ const GamePage = ({ cards }) => {
     }
   }, [round]);
 
+  useEffect(() => {
+    console.log("Stats updated:", stats);
+  }, [stats]);
+
+  useEffect(() => {
+    console.log("Temp stats updated:", tempStats);
+  }, [tempStats]);
+
   const getCardCounts = () => {
     if (round >= 1 && round <= 3) {
       return { risk: 1, mitigation: 2 };
