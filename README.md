@@ -3,16 +3,16 @@
 
 
 <h2>How to run</h2>
-1. Open the folder TEST-RYHM1 in terminal
-2. Type 'cd mitigate-app'
-3. Install dependecies 
-```
-npm install
-```
-4. Start the development server
-```
-npm start
-```
+<ol>
+  <li><strong>Open the folder TEST-RYHM1 in terminal</strong></li>
+  <li><strong>Type 'cd mitigate-app'</strong></li>
+  <li><strong>Install dependencies:</strong>
+    <pre><code>npm install</code></pre>
+  </li>
+  <li><strong>Start the development server:</strong>
+    <pre><code>npm start</code></pre>
+  </li>
+</ol>
 
 <br>
 liikmed: 
