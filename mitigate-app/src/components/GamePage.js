@@ -148,17 +148,45 @@ const GamePage = ({ cards }) => {
   const endRound = () => {
     const newTempStats = { scope: 0, quality: 0, time: 0, money: 0 };
 
+    const probabilityCheck = (probability) => {
+      const randomValue = Math.random() * 100;
+      if (probability === 1) return randomValue < 50;
+      if (probability === 2) return randomValue < 65;
+      if (probability === 3) return randomValue < 80;
+      if (probability === 4) return randomValue < 85;
+      if (probability === 5) return randomValue < 90;
+      if (probability === 6) return randomValue < 95;
+      return false;
+    };
+
     riskCards.forEach(riskCard => {
+      const riskCardWentThrough = probabilityCheck(riskCard.attributes.probability);
+
       if (riskCard.droppedMitigationCard) {
-        newTempStats.scope += riskCard.attributes.scope + riskCard.droppedMitigationCard.attributes.scope;
-        newTempStats.quality += riskCard.attributes.quality + riskCard.droppedMitigationCard.attributes.quality;
-        newTempStats.time += riskCard.attributes.time + riskCard.droppedMitigationCard.attributes.time;
-        newTempStats.money += riskCard.attributes.money + riskCard.droppedMitigationCard.attributes.money;
+        newTempStats.scope += riskCard.droppedMitigationCard.attributes.scope;
+        newTempStats.quality += riskCard.droppedMitigationCard.attributes.quality;
+        newTempStats.time += riskCard.droppedMitigationCard.attributes.time;
+        newTempStats.money += riskCard.droppedMitigationCard.attributes.money;
+
+        if (riskCardWentThrough) {
+          console.log(`Risk card ${riskCard.id} went through and a mitigation card was placed.`);
+          newTempStats.scope += riskCard.attributes.scope;
+          newTempStats.quality += riskCard.attributes.quality;
+          newTempStats.time += riskCard.attributes.time;
+          newTempStats.money += riskCard.attributes.money;
+        } else {
+          console.log(`Risk card ${riskCard.id} did not go through but a mitigation card was placed.`);
+        }
       } else {
-        newTempStats.scope += riskCard.attributes.scope;
-        newTempStats.quality += riskCard.attributes.quality;
-        newTempStats.time += riskCard.attributes.time;
-        newTempStats.money += riskCard.attributes.money;
+        if (riskCardWentThrough) {
+          console.log(`Risk card ${riskCard.id} went through without a mitigation card placed.`);
+          newTempStats.scope += riskCard.attributes.scope;
+          newTempStats.quality += riskCard.attributes.quality;
+          newTempStats.time += riskCard.attributes.time;
+          newTempStats.money += riskCard.attributes.money;
+        } else {
+          console.log(`Risk card ${riskCard.id} did not go through.`);
+        }
       }
     });
 
