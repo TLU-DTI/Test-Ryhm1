@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2739896192225959301}
   - component: {fileID: 4806330841437593208}
   - component: {fileID: 6511602008611687208}
+  - component: {fileID: 2505737890204655324}
   m_Layer: 5
   m_Name: ActionCard
   m_TagString: Untagged
@@ -36,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -87.94531, y: -245.90996}
-  m_SizeDelta: {x: 80, y: 160}
+  m_SizeDelta: {x: 100, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2739896192225959301
 CanvasRenderer:
@@ -66,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 941a6ac8da62af24891131e0f269353b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 83ed44138c5f54b4b81fe102401a874e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -88,8 +89,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36d137a7831a47d46a5a7e3a396218c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 0
   scope: 5
   quality: 5
   time: -5
   money: 0
   selected: 0
+  zoomPanel: {fileID: 0}
+  zoomImage: {fileID: 0}
+--- !u!225 &2505737890204655324
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5687551795569080773}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

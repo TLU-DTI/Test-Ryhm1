@@ -15,11 +15,12 @@ public class GameManager : MonoBehaviour
     // Risk cards
     public RiskCard[] riskCards;
     public List<int> currentRiskCards;
+    public List<int?> riskCardsInPlay;
 
     // Action cards
     public MitigationCard[] actionCards;
     public List<int> currentActionCards;
-    public List<int> actionCardsInHand;
+    public List<int?> actionCardsInHand;
 
     // Selected cards
     public RiskCard selectedRiskCard;
@@ -28,124 +29,130 @@ public class GameManager : MonoBehaviour
     // Card counts
     public int riskCardsOnField = 2;
     public int actionCardsOnField = 3;
-
-    private Dictionary<int, MitigationCard> mitigationCardDictionary = new Dictionary<int, MitigationCard>();
+    
+    public bool isValidDrop = false;
 
     void Start()
     {
-        nextTurnButton.onClick.AddListener(OnNextTurnButtonClick);
-        InitializeCurrentRiskCards();
-        InitializeCurrentActionCards();
+        InitializeCards();
+        actionCardsInHand = new List<int?>();
+        for (int i = 0; i < actionCardsOnField; i++)
+        {
+            actionCardsInHand.Add(null);
+        }
+        riskCardsInPlay = new List<int?>();
+        for (int i = 0; i < riskCardsOnField; i++)
+        {
+            riskCardsInPlay.Add(null);
+        }
+        generateRiskCards();
+        generateActionCards();
         PlaceCardsOnField();
     }
 
-    void InitializeCurrentRiskCards()
+    public void NextTurn()
     {
-        // Initialize all risk cards initially
-        currentRiskCards = Enumerable.Range(0, riskCards.Length).ToList();
-    }
-
-    void InitializeCurrentActionCards()
-    {
-        // Initialize action cards in hand randomly
-        currentActionCards = GetShuffledCardIndexes(actionCards.Length);
-        actionCardsInHand = currentActionCards.Take(actionCardsOnField).ToList();
-    }
-
-    List<int> GetShuffledCardIndexes(int count)
-    {
-        List<int> indexes = Enumerable.Range(0, count).ToList();
-        ShuffleList(indexes);
-        return indexes;
-    }
-
-    void ShuffleList<T>(List<T> list)
-    {
-        System.Random rng = new System.Random();
-        int n = list.Count;
-        while (n > 1)
-        {
-            n--;
-            int k = rng.Next(n + 1);
-            T value = list[k];
-            list[k] = list[n];
-            list[n] = value;
-        }
-    }
-
-    public void ClearAndPositionNewCards()
-    {
-        ClearCards();
-        GenerateRandomRiskIndexes();
-        ReplaceUsedActionCards();
+        ClearCardsAfterTurn();
+        generateRiskCards();
+        generateActionCards();
         PlaceCardsOnField();
     }
 
-    void ReplaceUsedActionCards()
+    public void SetSelectedRiskCard(RiskCard card)
     {
-        // Track IDs of action cards that were used (deleted) this turn
-        List<int> usedActionCardIDs = GetUsedActionCardIDs();
-
-        // Determine remaining cards in hand (excluding used ones)
-        List<int> remainingActionCards = actionCardsInHand.Where(id => !usedActionCardIDs.Contains(id)).ToList();
-
-        // Replace used cards with new random cards, if needed
-        while (remainingActionCards.Count < actionCardsOnField)
+        if (selectedRiskCard != null && selectedRiskCard != card)
         {
-            int randomCardID = GetRandomActionCardID();
-            if (!remainingActionCards.Contains(randomCardID))
+            selectedRiskCard.selected = false;
+            selectedRiskCard.UpdateSize();
+            selectedRiskCard = card;
+            selectedRiskCard.Select();
+            
+        } else if (selectedRiskCard != null && selectedRiskCard == card)
+        {
+            selectedRiskCard.selected = false;
+            selectedRiskCard.UpdateSize();
+            selectedRiskCard = null;
+        } else 
+        {
+            selectedRiskCard = card;
+            selectedRiskCard.Select();
+        }
+        
+    }
+
+    public void SetSelectedActionCard(MitigationCard card)
+    {
+        if (selectedActionCard != null && selectedActionCard != card)
+        {
+            selectedActionCard.selected = false;
+            selectedActionCard.UpdateSize();
+            selectedActionCard = card;
+            selectedActionCard.Select();
+        } else if (selectedActionCard != null && selectedActionCard == card)
+        {
+            selectedActionCard.selected = false;
+            selectedActionCard.UpdateSize();
+            selectedActionCard = null;
+        } else
+        {
+            selectedActionCard = card;
+            selectedActionCard.Select();
+        }
+        
+    }
+    void InitializeCards()
+    {
+        for (int i = 0; i < riskCards.Length; i++)
+        {
+            currentRiskCards.Add(i);
+        }
+        for (int i = 0; i < actionCards.Length; i++)
+        {
+            currentActionCards.Add(i);
+        }
+    }
+
+    public void generateRiskCards()
+    {
+        if (currentRiskCards.Count == 0)
+        {
+            Debug.LogError("currentRiskCards is empty.");
+        } else 
+        {
+            for (int i = 0; i < riskCardsOnField; i++)
             {
-                remainingActionCards.Add(randomCardID);
+                int randomIndex = UnityEngine.Random.Range(0, currentRiskCards.Count);
+                riskCardsInPlay[i] = currentRiskCards[randomIndex];
+                currentRiskCards.Remove((int)riskCardsInPlay[i]);
             }
         }
-
-        // Update actionCardsInHand with the new set of cards
-        actionCardsInHand = remainingActionCards.Take(actionCardsOnField).ToList();
     }
 
-    private List<int> GetUsedActionCardIDs()
+    public void generateActionCards()
     {
-        List<int> usedCardIDs = new List<int>();
-        foreach (Transform child in actionArea.transform)
+        if (currentActionCards.Count == 0)
         {
-            MitigationCard card = child.GetComponent<MitigationCard>();
-            if (card != null)
-            {
-                usedCardIDs.Add(card.ID);
+            Debug.LogError("currentRiskCards is empty.");
+        } else 
+        {
+            for (int i = 0; i < actionCardsOnField; i++)
+            {   
+                if (actionCardsInHand[i] == null)
+                {
+                    if (currentActionCards.Count > 0)
+                    {
+                        int randomIndex = UnityEngine.Random.Range(0, currentActionCards.Count);
+                        actionCardsInHand[i] = currentActionCards[randomIndex];
+                        currentActionCards.Remove(randomIndex);
+                    }
+                    else
+                    {
+                        Debug.LogError("No more cards left in currentRiskCards.");
+                    }   
+                }
             }
         }
-        return usedCardIDs;
     }
-
-    private int GetRandomActionCardID()
-    {
-        List<int> availableCards = currentActionCards.Except(actionCardsInHand).ToList();
-        if (availableCards.Count > 0)
-        {
-            int randomIndex = UnityEngine.Random.Range(0, availableCards.Count);
-            return availableCards[randomIndex];
-        }
-        else
-        {
-            Debug.LogWarning("No available action cards left.");
-            return -1; // Handle this case as per your game's logic
-        }
-    }
-
-    public void GenerateRandomRiskIndexes()
-    {
-        // Generate new random risk cards each turn without repetition
-        currentRiskCards = GetShuffledCardIndexes(riskCards.Length).Take(riskCardsOnField).ToList();
-    }
-
-    public void OnNextTurnButtonClick()
-    {
-        if (nextTurnButton.interactable)
-        {
-            ClearAndPositionNewCards();
-        }
-    }
-
     public void PlaceCardsOnField()
     {
         // Place risk cards
@@ -155,7 +162,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < riskCardsOnField; i++)
         {
-            int cardIndex = currentRiskCards[i];
+            int cardIndex = (int)riskCardsInPlay[i];
             float RxPos = riskStartX + i * riskCardSpacing;
             RiskCard riskCard = Instantiate(riskCards[cardIndex], riskArea.transform);
             riskCard.GetComponent<RectTransform>().anchoredPosition = new Vector2(RxPos, 0);
@@ -168,17 +175,15 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < actionCardsOnField; i++)
         {
-            int cardIndex = actionCardsInHand[i];
+            int cardIndex = (int)actionCardsInHand[i];
             float AxPos = actionStartX + i * actionCardSpacing;
-            MitigationCard actionCardInstance = Instantiate(actionCards[cardIndex], actionArea.transform).GetComponent<MitigationCard>();
-            RectTransform cardTransform = actionCardInstance.GetComponent<RectTransform>();
-            cardTransform.anchoredPosition = new Vector2(AxPos, 0);
-            actionCardInstance.ID = cardIndex;
-            actionCardInstance.gameObject.SetActive(true);
+            MitigationCard actionCard = Instantiate(actionCards[cardIndex], actionArea.transform).GetComponent<MitigationCard>();
+            actionCard.GetComponent<RectTransform>().anchoredPosition = new Vector2(AxPos, 0);
+            actionCard.ID = i;
         }
     }
 
-    public void ClearCards()
+    public void ClearCardsAfterTurn()
     {
         foreach (Transform child in riskArea.transform)
         {
