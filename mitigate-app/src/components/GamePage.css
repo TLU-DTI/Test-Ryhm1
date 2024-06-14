@@ -1,4 +1,4 @@
-/* GamePage.css */
+
 .game-page {
   text-align: center;
   display: flex;
@@ -16,6 +16,8 @@
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
+  padding-bottom: 20px;
+  gap: 20px;
 }
 
 .back-menu-button, .end-round-button {
@@ -46,7 +48,7 @@
   margin-bottom: 20px;
 }
 
-.mitigation-cards-container {
+.mitigation-cards{
   display: flex;
   flex-direction: row;
   justify-content: center;

@@ -18,7 +18,7 @@ const GameEndScreen = ({ finalStats, mitigationsCount, roundsPlayed }) => {
         Risks mitigated: {mitigationsCount}
       </div>
       <div className="round-count">
-        Rounds played: {roundsPlayed}
+        Rounds played: {roundsPlayed-1}
       </div>
       <button className="back-menu-button" onClick={() => navigate('/')}>Back to Menu</button>
     </div>
