@@ -63,23 +63,6 @@ const RiskCard = ({ card, onDrop, openModal }) => {
   );
 };
 
-const MitigationDeck = ({ onDrop }) => {
-  const [, drop] = useDrop(() => ({
-    accept: ItemTypes.CARD,
-    drop: (item) => {
-      if (item.fromRiskCard) {
-        onDrop(item.id);
-      }
-    },
-  }), []);
-
-  return (
-    <div ref={drop} className="mitigation-deck">
-      <div className="mitigation-deck-text">Drop Mitigation Cards Here</div>
-    </div>
-  );
-};
-
 const GamePage = ({ cards }) => {
   const [round, setRound] = useState(1);
   const [riskCards, setRiskCards] = useState([]);
@@ -224,29 +207,6 @@ const GamePage = ({ cards }) => {
     }
   };
 
-  const handleRemove = (mitigationCardId) => {
-    console.log(`Removed mitigation card ${mitigationCardId} from risk card`);
-    const removedCard = cards.find(card => card.id === mitigationCardId);
-    const riskCard = riskCards.find(card => card.droppedMitigationCard?.id === mitigationCardId);
-
-    if (removedCard && riskCard) {
-      setRiskCards(prev => prev.map(card =>
-        card.droppedMitigationCard?.id === mitigationCardId ? { ...card, droppedMitigationCard: null } : card
-      ));
-      setMitigationCards(prev => [...prev, removedCard]);
-      setPlayedMitigationCards(prev => prev.filter(id => id !== mitigationCardId));
-
-      setTempStats(prevTempStats => ({
-        scope: prevTempStats.scope - removedCard.attributes.scope - riskCard.attributes.scope,
-        quality: prevTempStats.quality - removedCard.attributes.quality - riskCard.attributes.quality,
-        time: prevTempStats.time - removedCard.attributes.time - riskCard.attributes.time,
-        money: prevTempStats.money - removedCard.attributes.money - riskCard.attributes.money
-      }));
-    } else {
-      console.error(`Mitigation card with id ${mitigationCardId} not found`);
-    }
-  };
-
   const openModal = (src) => {
     setModalImage(src);
   };
@@ -280,7 +240,6 @@ const GamePage = ({ cards }) => {
             <MitigationCard key={card.id} card={card} openModal={openModal} />
           ))}
         </div>
-        <MitigationDeck onDrop={handleRemove} />
       </div>
       {modalImage && (
         <div className="modal" onClick={closeModal}>
