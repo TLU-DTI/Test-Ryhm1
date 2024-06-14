@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDrag, useDrop } from 'react-dnd';
 import Stats from './Stats';
+import GameEndScreen from './GameEndScreen'; // Import the GameEndScreen component
 import './GamePage.css';
 
 const ItemTypes = {
@@ -29,7 +30,7 @@ const RiskCard = ({ card, onDrop, openModal }) => {
   const [, drop] = useDrop(() => ({
     accept: ItemTypes.CARD,
     drop: (item) => onDrop(item.id, card.id),
-    canDrop: () => !card.droppedMitigationCard, // Only allow drop if there's no mitigation card
+    canDrop: () => !card.droppedMitigationCard,
   }), [card]);
 
   const [{ isDragging }, drag] = useDrag(() => ({
@@ -42,11 +43,12 @@ const RiskCard = ({ card, onDrop, openModal }) => {
   }), [card.droppedMitigationCard]);
 
   return (
-    <div ref={drop} className="risk-card-container" onClick={() => openModal(card.src)}>
+    <div ref={drop} className="risk-card-container">
       <img
         src={card.src}
         alt="Risk Card"
         className="risk-card"
+        onClick={() => openModal(card.src)}
       />
       {card.droppedMitigationCard && (
         <img
@@ -54,6 +56,7 @@ const RiskCard = ({ card, onDrop, openModal }) => {
           src={card.droppedMitigationCard.src}
           alt="Mitigation Card"
           className={`mitigation-card on-risk-card ${isDragging ? 'dragging' : ''}`}
+          onClick={() => openModal(card.droppedMitigationCard.src)}
         />
       )}
     </div>
@@ -85,6 +88,7 @@ const GamePage = ({ cards }) => {
   const [modalImage, setModalImage] = useState(null);
   const [stats, setStats] = useState({ scope: 40, quality: 40, time: 40, money: 40 });  // Initial stats
   const [tempStats, setTempStats] = useState({ scope: 0, quality: 0, time: 0, money: 0 });
+  const [gameOver, setGameOver] = useState(false); // New state for game over
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -95,12 +99,12 @@ const GamePage = ({ cards }) => {
   }, [cards]);
 
   useEffect(() => {
-    if (round > 12) {
-      navigate('/');
+    if (round > 12 || Object.values(stats).some(stat => stat <= 0)) {
+      setGameOver(true);
     } else {
       drawNewCards();
     }
-  }, [round]);
+  }, [round, stats]);
 
   useEffect(() => {
     console.log("Stats updated:", stats);
@@ -144,16 +148,13 @@ const GamePage = ({ cards }) => {
   const endRound = () => {
     const newTempStats = { scope: 0, quality: 0, time: 0, money: 0 };
 
-    // Loop through each risk card and update the tempStats accordingly
     riskCards.forEach(riskCard => {
       if (riskCard.droppedMitigationCard) {
-        // If there is a mitigation card, combine the stats
         newTempStats.scope += riskCard.attributes.scope + riskCard.droppedMitigationCard.attributes.scope;
         newTempStats.quality += riskCard.attributes.quality + riskCard.droppedMitigationCard.attributes.quality;
         newTempStats.time += riskCard.attributes.time + riskCard.droppedMitigationCard.attributes.time;
         newTempStats.money += riskCard.attributes.money + riskCard.droppedMitigationCard.attributes.money;
       } else {
-        // If there is no mitigation card, just add the risk card's stats
         newTempStats.scope += riskCard.attributes.scope;
         newTempStats.quality += riskCard.attributes.quality;
         newTempStats.time += riskCard.attributes.time;
@@ -161,7 +162,6 @@ const GamePage = ({ cards }) => {
       }
     });
 
-    // Update the overall stats with the temporary stats
     setStats(prevStats => ({
       scope: prevStats.scope + newTempStats.scope,
       quality: prevStats.quality + newTempStats.quality,
@@ -169,10 +169,7 @@ const GamePage = ({ cards }) => {
       money: prevStats.money + newTempStats.money
     }));
 
-    // Reset temporary stats for the next round
     setTempStats({ scope: 0, quality: 0, time: 0, money: 0 });
-
-    // Move to the next round
     setRound(prevRound => prevRound + 1);
   };
 
@@ -182,14 +179,12 @@ const GamePage = ({ cards }) => {
     const riskCard = riskCards.find(card => card.id === riskCardId);
 
     if (droppedCard && riskCard) {
-      // Update risk card with dropped mitigation card
-      setRiskCards(prev => prev.map(card => 
+      setRiskCards(prev => prev.map(card =>
         card.id === riskCardId ? { ...card, droppedMitigationCard: droppedCard } : card
       ));
       setMitigationCards(prev => prev.filter(card => card.id !== mitigationCardId));
       setPlayedMitigationCards(prev => [...prev, mitigationCardId]);
 
-      // Update temporary stats
       setTempStats(prevTempStats => ({
         scope: prevTempStats.scope + droppedCard.attributes.scope + riskCard.attributes.scope,
         quality: prevTempStats.quality + droppedCard.attributes.quality + riskCard.attributes.quality,
@@ -207,13 +202,12 @@ const GamePage = ({ cards }) => {
     const riskCard = riskCards.find(card => card.droppedMitigationCard?.id === mitigationCardId);
 
     if (removedCard && riskCard) {
-      setRiskCards(prev => prev.map(card => 
+      setRiskCards(prev => prev.map(card =>
         card.droppedMitigationCard?.id === mitigationCardId ? { ...card, droppedMitigationCard: null } : card
       ));
       setMitigationCards(prev => [...prev, removedCard]);
       setPlayedMitigationCards(prev => prev.filter(id => id !== mitigationCardId));
 
-      // Update temporary stats
       setTempStats(prevTempStats => ({
         scope: prevTempStats.scope - removedCard.attributes.scope - riskCard.attributes.scope,
         quality: prevTempStats.quality - removedCard.attributes.quality - riskCard.attributes.quality,
@@ -233,6 +227,12 @@ const GamePage = ({ cards }) => {
     setModalImage(null);
   };
 
+  if (gameOver) {
+    return (
+      <GameEndScreen finalStats={stats} mitigationsCount={playedMitigationCards.length} roundsPlayed={round} />
+    );
+  }
+
   return (
     <div className="game-page">
       <div className="game-header">
@@ -240,7 +240,7 @@ const GamePage = ({ cards }) => {
         <div className="round-counter">Round: {round}</div>
         <button className="end-round-button" onClick={endRound}>End Round</button>
       </div>
-      <Stats stats={stats} />  {/* Add the Stats component here */}
+      <Stats stats={stats} />
       <div className="cards-container">
         <div className="risk-cards-container">
           {riskCards.map(card => (

@@ -1,0 +1,33 @@
+.game-end-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+  }
+  
+  .game-end-screen h1 {
+    margin-bottom: 20px;
+  }
+  
+  .final-stats {
+    margin-bottom: 20px;
+  }
+  
+  .final-stats .stat {
+    margin: 5px 0;
+  }
+  
+  .mitigations-count {
+    margin-bottom: 20px;
+  }
+  
+  .back-menu-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
