@@ -1,8 +1,7 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
+using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -27,13 +26,41 @@ public class GameManager : MonoBehaviour
     public MitigationCard selectedActionCard;
 
     // Card counts
-    public int riskCardsOnField = 2;
-    public int actionCardsOnField = 3;
+    public int riskCardsOnField = 1;
+    public int actionCardsOnField = 2;
+
+    public int round = 0;
+    public int maxRounds = 12;
+    public bool lost = false;
+
+    public int scope = 50;
+    public int quality = 50;
+    public int time = 50;
+    public int money = 50;
+
+    int delayScope;
+    int delayQuality;
+    int delayTime;
+    int delayMoney;
+
+    public int difficulty = 0; // 0 = rounds 1 - 3, 1 = rounds 4 - 6, 2 = rounds 7+ (for now)
+
+    public TextMeshProUGUI scopeText;
+    public TextMeshProUGUI qualityText;
+    public TextMeshProUGUI timeText;
+    public TextMeshProUGUI moneyText;
+    public TextMeshProUGUI roundText;
+
+    public GameObject gameOverUI;
     
     public bool isValidDrop = false;
 
+    public string GameScene { get; private set; }
+
     void Start()
     {
+        GameScene = "GameScene";
+        gameOverUI.SetActive(false);
         InitializeCards();
         actionCardsInHand = new List<int?>();
         for (int i = 0; i < actionCardsOnField; i++)
@@ -48,6 +75,54 @@ public class GameManager : MonoBehaviour
         generateRiskCards();
         generateActionCards();
         PlaceCardsOnField();
+        RoundUpdater();
+        UpdateStatTexts();
+    }
+
+    public void Update()
+    {
+        if (round > maxRounds && lost == false)
+        {
+            round = 12;
+            EndGame();
+        }
+
+        if (lost == true)
+        {
+            EndGame();
+        }
+    }
+
+    public void EndGame()
+    {
+        UpdateStatTexts();
+        ClearCardsAfterTurn();
+        gameOverUI.SetActive(true);
+    }
+
+    public void RoundUpdater()
+    {
+        round += 1;
+        roundText.text = "Round: " + round;
+    }
+
+    void UpdateStatTexts()
+    {
+        scope += delayScope;
+        quality += delayQuality;
+        time += delayTime;
+        money += delayMoney;
+        Debug.Log("Delay stats before: " + delayScope + ", " + delayQuality + ", " + delayTime + ", " + delayMoney);
+        delayScope = 0;
+        delayQuality = 0;
+        delayTime = 0;
+        delayMoney = 0;
+        Debug.Log("Delay stats after: " + delayScope + ", " + delayQuality + ", " + delayTime + ", " + delayMoney);
+        scopeText.text = "Scope: " + scope;
+        qualityText.text = "Quality: " + quality;
+        timeText.text = "Time: " + time;
+        moneyText.text = "Money: " + money;
+        Debug.Log("Stats are refreshed!");
     }
 
     public void NextTurn()
@@ -56,6 +131,8 @@ public class GameManager : MonoBehaviour
         generateRiskCards();
         generateActionCards();
         PlaceCardsOnField();
+        RoundUpdater();
+        UpdateStatTexts();
     }
 
     public void SetSelectedRiskCard(RiskCard card)
@@ -100,6 +177,27 @@ public class GameManager : MonoBehaviour
         }
         
     }
+
+    public void AddStats(int sAdd, int qAdd, int tAdd, int mAdd)
+    {
+        scope += sAdd;
+        quality += qAdd;
+        time += tAdd;
+        money += mAdd;
+        Debug.Log("Stats updated. Scope: +" + sAdd + " Quality: +" + qAdd + " Time: +" + tAdd + " Money: +" + mAdd);
+        UpdateStatTexts();
+    }
+
+    public (int delayScope, int delayQuality, int delayTime, int delayMoney) DelayedAddStats(int sAdd, int qAdd, int tAdd, int mAdd)
+    {
+        delayScope += sAdd;
+        delayQuality += qAdd;
+        delayTime += tAdd;
+        delayMoney += mAdd;
+        Debug.Log("Stats updated. Scope: +" + sAdd + " Quality: +" + qAdd + " Time: +" + tAdd + " Money: +" + mAdd);
+        return (delayScope, delayQuality, delayTime, delayMoney);
+    }
+
     void InitializeCards()
     {
         for (int i = 0; i < riskCards.Length; i++)
@@ -153,6 +251,12 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(GameScene);
+    }
+
     public void PlaceCardsOnField()
     {
         // Place risk cards
