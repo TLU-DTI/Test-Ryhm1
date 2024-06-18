@@ -1,15 +1,44 @@
-# Ryhm1
-<h1>Ryhm 1 </h1>
+# Test-Ryhm1
+<h1>Mitigate</h1>
 
-liikmed: 
+<br>
+<h2>Pictures</h2>
+
+<br>
+<h2>Description</h2>
+Mitigate is a physical card game, that is currently being made in web form. It is a card game teaching young entrepeneurs and business owners
+about the risks that may surface in the business world and how to <strong>mitigate</strong> them. Our goal with this project is to make a fully working game with a pleasing design. 
+The UI and cards are fully designed by us.
+<h3>Tallinn University School of Digital Technologies</h3>
+Created at Tallinn University.
+
+<h2>How to run</h2>
+<ol>
+</ol>
+
+<br>
+<h2>Contributors</h2>
 Eerik Poopuu
+<br>
 Hannes Väster
+<br>
 Kristjan Petersell
+<br>
 Erik Brück
+<br>
 Kristjan Peedisson
 
-<h3>Projekti nimi</h3>
-Mitigate Online
-<h4>Projekti Kirjeldus</h4>
-Luua kaartidega strateegia mäng, kus üksteise järel ilmnevad riskikaardid, mis kahjustavad projekti üldeesmärke (ulatus, kvaliteet, aeg, maksumus). Mängija peab nendega regulaarselt tegelema, valides vastumeetmete kaarte. Igal meetmel on oma hind ja mõju riskile ning seeläbi ka projektitulemustele. Mäng lõpeb, kui mõni projekti üldeesmärkidest langeb alla 25% või kui mängija suudab läbida 12 vooru. 
-
+Vaja teha:
+-blogi
+-riski kaardid:
+  -nimetused
+  -disain
+  -desc.
+  -event?
+  -stat changes
+  -picture
+-action buttons (action kaardid replacement)
+-Unity/Gamemaker?
+-prototype (base game)
+-visual design (theme, graphics)
+-game design
