@@ -1,5 +1,5 @@
-# Test-Ryhm1
-<h1>Ryhm 1 test</h1>
+# Ryhm1
+<h1>Ryhm 1 </h1>
 
 liikmed: 
 Eerik Poopuu
@@ -8,17 +8,8 @@ Kristjan Petersell
 Erik Brück
 Kristjan Peedisson
 
-Vaja teha:
--blogi
--riski kaardid:
-  -nimetused
-  -disain
-  -desc.
-  -event?
-  -stat changes
-  -picture
--action buttons (action kaardid replacement)
--Unity/Gamemaker?
--prototype (base game)
--visual design (theme, graphics)
--game design
+<h3>Projekti nimi</h3>
+Mitigate Online
+<h4>Projekti Kirjeldus</h4>
+Luua kaartidega strateegia mäng, kus üksteise järel ilmnevad riskikaardid, mis kahjustavad projekti üldeesmärke (ulatus, kvaliteet, aeg, maksumus). Mängija peab nendega regulaarselt tegelema, valides vastumeetmete kaarte. Igal meetmel on oma hind ja mõju riskile ning seeläbi ka projektitulemustele. Mäng lõpeb, kui mõni projekti üldeesmärkidest langeb alla 25% või kui mängija suudab läbida 12 vooru. 
+
