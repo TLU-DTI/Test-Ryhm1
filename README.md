@@ -21,30 +21,30 @@ The UI and cards are fully designed by us.
 This was created as part of the summer internship course in the Informatics program at Tallinn University.
 
 <h2>Software used</h2>
-Discord-communication <br>
-Reactjs-javascripti framework<br>
-Canva - <a href="https://www.canva.com/design/DAGHzrgkmQU/S8lpU7WQIY3Jz9kPI5O-QQ/edit">risk cards</a> <br>
-Canva - <a href="https://www.canva.com/design/DAGH0KPXCLM/hpNL3x3yqOB3j4lMMSY3SQ/edit"> mitication cards</a><br>
-Unity- game development  <br>
-Figma- <a href="https://www.figma.com/design/uwN3eKdVG1K18j0c0wdXE6/Mitigate?node-id=0-1&t=dCoVEEmwbBbSax01-0">prototype</a>
+<li>Discord - communication</li>
+<li>ReactJS - Javascript framework</li>
+<li>Canva - <a href="https://www.canva.com/design/DAGHzrgkmQU/S8lpU7WQIY3Jz9kPI5O-QQ/edit">risk cards</a></li>
+<li>Canva - <a href="https://www.canva.com/design/DAGH0KPXCLM/hpNL3x3yqOB3j4lMMSY3SQ/edit"> mitigation cards</a></li>
+<li>Unity - game development  <br>
+<li>Figma - <a href="https://www.figma.com/design/uwN3eKdVG1K18j0c0wdXE6/Mitigate?node-id=0-1&t=dCoVEEmwbBbSax01-0">prototype</a></li>
 
 <h2> Goals</h2>
 The player will learn: <br>
-1.Examples of real risks and their potential impact on project general objectives <br>
-2.Examples of countermeasures and their impact on risks<br>
-3.The iterative nature of risk management<br>
-4.How is risk management integrated with the rest of the project management field of expertise?
+1. Examples of real risks and their potential impact on project general objectives <br>
+2. Examples of countermeasures and their impact on risks<br>
+3. The iterative nature of risk management<br>
+4. How is risk management integrated with the rest of the project management field of expertise?
 <br>
 <h2>Contributors</h2>
-Eerik Poopuu
+<li>Eerik Poopuu</li>
 <br>
-Hannes Väster
+<li>Hannes Väster</li>
 <br>
-Kristjan Petersell
+<li>Kristjan Petersell</li>
 <br>
-Erik Brück
+<li>Erik Brück</li>
 <br>
-Kristjan Peedisson
+<li>Kristjan Peedisson</li>
 
 ## License
 
