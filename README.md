@@ -18,7 +18,7 @@ React JS ver 18.3.1
 
 <h2>Requirements</h2>
 <ol>
-  <li>(Node.js)[https://nodejs.org/]</li>
+  <li><a href="https://nodejs.org/">Node.js</a></li></li>
   <li><strong>npm</strong> (Node Package Manager): npm comes bundled with Node.js and is used to manage the packages and dependencies of your React application.</li>
   <li><strong>(Optional) </strong>Code editor</li>
 </ol>
