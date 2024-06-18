@@ -5,28 +5,52 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
+  justify-content: center;
+  min-height: 100vh; /* Ensures the app takes full viewport height */
+  width: 100vw; /* Ensures the app takes full viewport width */
   background-image: url(/public/background.png);
-  background-repeat: no-repeat; 
+  background-repeat: no-repeat;
+  background-size: cover; /* Ensures the image covers the entire background */
   background-position: center;
+  overflow: hidden; /* Prevents scrolling */
 }
 
-/* Päise stiil */
+.menu-box {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header container style */
+.app-header-container {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Header style */
 .app-header {
   font-size: 24px;
-  color: #DDA0DD; /* Pastelne lilla */
-  background: linear-gradient(45deg, #DDA0DD, #FF69B4); /* Metallic lilla/roosa */
+  color: #DDA0DD; /* Pastel purple */
+  background: linear-gradient(45deg, #DDA0DD, #FF69B4); /* Metallic purple/pink */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Nupu stiil */
+/* Button style */
 button {
   font-family: Rajdhani;
   font-size: 20px;
   padding: 10px 20px;
   margin-top: 20px;
-  background-color: #FF69B4; /* Roosa */
+  background-color: #FF69B4; /* Pink */
   border: none;
   color: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -34,10 +58,30 @@ button {
 }
 
 button:hover {
-  background-color: #DDA0DD; }
-
+  background-color: #DDA0DD;
+}
 
 h1 {
   margin: 0;
   font-size: 2em;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .App {
+    padding: 20px;
+  }
+
+  .app-header {
+    font-size: 20px;
+  }
+
+  button {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
 }

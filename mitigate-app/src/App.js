@@ -150,12 +150,18 @@ function App() {
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="App">
-        <div className="app-header"><h1>Mitigate</h1></div>
-        <br />
+        <div className="app-header-container">
+          <div className="app-header">
+            <h1>Mitigate</h1>
+          </div>
+        </div>
+        <br/>
         {location.pathname === '/' && (
           <>
+          <div className="menu-box">
             <button onClick={shuffleCards}>New game</button>
             <button onClick={() => navigate('/settings')}>Settings</button>
+          </div>
           </>
         )}
         <Routes>

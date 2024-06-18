@@ -22,7 +22,11 @@ body{
   font-size: 20px;
   flex-grow: 1;
   text-align: center;
-  color: #ccc;
+  color: #f7f5f5;
+  border: 2px solid black; /* Black border */
+  padding: 10px; /* Padding inside the box */
+  border-radius: 5px; /* Rounded corners */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
 }
 
 .cards-container {
@@ -116,19 +120,4 @@ body{
 
 .mitigation-deck-text {
   color: transparent; /* Hide the text */
-}
-
-.stats {
-  position:absolute;
-  top: 10rem;
-  right:20rem;
-  background: transparent;
-  padding: 10px;
-  color: #f70404;
-  font-weight: bold;
-  font-size:2rem;
-}
-
-.stats div {
-  margin-bottom: 5px;
 }

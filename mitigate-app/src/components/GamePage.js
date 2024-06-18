@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDrag, useDrop } from 'react-dnd';
 import Stats from './Stats';
+import './Stats.css';
 import GameEndScreen from './GameEndScreen';
 import './GamePage.css';
 
