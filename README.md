@@ -10,7 +10,7 @@ Mitigate is a physical card game, that is currently being made in web form. It i
 about the risks that may surface in the business world and how to <strong>mitigate</strong> them. Our goal with this project is to make a fully working game with a pleasing design. 
 The UI and cards are fully designed by us.
 <h3>Tallinn University School of Digital Technologies</h3>
-Created at Tallinn University.
+This was created as part of the summer internship course in the Informatics program at Tallinn University.
 
 <h2>Software used</h2>
 Discord-communication <br>
