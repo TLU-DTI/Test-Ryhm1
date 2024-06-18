@@ -5,6 +5,9 @@
 <h2>Pictures</h2>
 <br>
 <h2>How to run Unity app</h2>
+<ol>
+<strong>Step 1:</strong>
+</ol>
 <br>
 <h2>How to run React app</h2>
 <strong>To Run react app, please switch to branch Mitigate-React</strong>
@@ -31,11 +34,6 @@ The player will learn: <br>
 2.Examples of countermeasures and their impact on risks<br>
 3.The iterative nature of risk management<br>
 4.How is risk management integrated with the rest of the project management field of expertise?
-
-<h2>How to run</h2>
-<ol>
-</ol>
-
 <br>
 <h2>Contributors</h2>
 Eerik Poopuu
