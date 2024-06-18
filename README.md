@@ -3,6 +3,11 @@
 
 <br>
 <h2>Pictures</h2>
+<br>
+<h2>How to run Unity app</h2>
+<br>
+<h2>How to run React app</h2>
+<strong>To Run react app, please switch to branch Mitigate-React</strong>
 
 <br>
 <h2>Description</h2>
