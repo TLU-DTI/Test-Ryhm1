@@ -1,4 +1,3 @@
-using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -84,10 +83,6 @@ public class MitigationCard : MonoBehaviour, IPointerClickHandler, IBeginDragHan
         }
     }
 
-    private void Update() {
-        
-    }
-
     public void ApplyMitigation(RiskCard riskCard)
     {
         if (gameManager.selectedRiskCard != null)
@@ -105,6 +100,7 @@ public class MitigationCard : MonoBehaviour, IPointerClickHandler, IBeginDragHan
     {
         Destroy(gameObject);
         gameManager.actionCardsInHand[ID] = null;
+        gameManager.DelayedAddStats(scope, quality, time, money);
     }
 
     public void OnPointerClick(PointerEventData eventData)

@@ -10,13 +10,14 @@ public class RiskCard : MonoBehaviour, IPointerClickHandler, IDropHandler, IPoin
     public int money;
     public bool mitigated = false;
     public bool selected = false;
+    public int chance = 50;
     private GameManager gameManager;
     private Image image;
 
     private Vector3 originalSize;
     private Vector3 selectedSize;
     public GameObject zoomPanel;
-    public UnityEngine.UI.Image zoomImage;
+    public Image zoomImage;
     private Button zoomCloseButton;
 
     private void Start()
@@ -32,10 +33,10 @@ public class RiskCard : MonoBehaviour, IPointerClickHandler, IDropHandler, IPoin
             zoomPanel = zoomCanvas.transform.Find("ZoomPanel").gameObject;
             if (zoomPanel != null)
             {
-                zoomImage = zoomPanel.transform.Find("ZoomImage").GetComponent<UnityEngine.UI.Image>();
+                zoomImage = zoomPanel.transform.Find("ZoomImage").GetComponent<Image>();
                 if (zoomImage != null)
                 {
-                    UnityEngine.UI.Image cardImage = GetComponent<UnityEngine.UI.Image>();
+                    Image cardImage = GetComponent<Image>();
                     if (cardImage != null && cardImage.sprite != null)
                     {
                         zoomImage.sprite = cardImage.sprite;
@@ -65,6 +66,19 @@ public class RiskCard : MonoBehaviour, IPointerClickHandler, IDropHandler, IPoin
             selected = !selected;
         }
         UpdateSize();
+    }
+
+    void OnDestroy()
+    {
+        float randomIndex = Random.Range(0, 100);
+        if (randomIndex <= chance)
+        {
+            gameManager.AddStats(scope, quality, time, money);
+            Debug.Log("Risk card " + gameObject.name + " triggered with " + chance + "% chance.");
+        } else 
+        {
+            Debug.Log("Risk card " + gameObject.name + " avoided with " + (100 - chance) + "% chance.");
+        }
     }
 
     public void UpdateSize()
@@ -149,7 +163,7 @@ public class RiskCard : MonoBehaviour, IPointerClickHandler, IDropHandler, IPoin
 
     private void ShowZoomView()
     {
-        zoomImage.sprite = GetComponent<UnityEngine.UI.Image>().sprite;
+        zoomImage.sprite = GetComponent<Image>().sprite;
         zoomPanel.SetActive(true);
     }
 
