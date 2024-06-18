@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDrag, useDrop } from 'react-dnd';
 import Stats from './Stats';
-import GameEndScreen from './GameEndScreen'; // Import the GameEndScreen component
+import GameEndScreen from './GameEndScreen';
 import './GamePage.css';
 
 const ItemTypes = {
@@ -64,25 +64,31 @@ const RiskCard = ({ card, onDrop, openModal }) => {
 };
 
 const GamePage = ({ cards }) => {
+  const navigate = useNavigate();
+  const difficulty = localStorage.getItem('difficulty') || 'normal';
+  const initialStats = {
+    easy: { scope: 60, quality: 60, time: 60, money: 60 },
+    normal: { scope: 50, quality: 50, time: 50, money: 50 },
+    hard: { scope: 40, quality: 40, time: 40, money: 40 },
+  };
+
   const [round, setRound] = useState(1);
   const [riskCards, setRiskCards] = useState([]);
   const [mitigationCards, setMitigationCards] = useState([]);
   const [playedMitigationCards, setPlayedMitigationCards] = useState([]);
   const [modalImage, setModalImage] = useState(null);
-  const [stats, setStats] = useState({ scope: 40, quality: 40, time: 40, money: 40 });  // Initial stats
+  const [stats, setStats] = useState(initialStats[difficulty]);
   const [tempStats, setTempStats] = useState({ scope: 0, quality: 0, time: 0, money: 0 });
-  const [gameOver, setGameOver] = useState(false); // New state for game over
-  const navigate = useNavigate();
+  const [gameOver, setGameOver] = useState(false);
 
   useEffect(() => {
-    console.log("Cards prop:", cards);
     if (cards && cards.length > 0) {
       drawNewCards();
     }
   }, [cards]);
 
   useEffect(() => {
-    if (round > 12 || Object.values(stats).some(stat => stat <= 0)) {
+    if (round > 12 || Object.values(stats).some(stat => stat < 25)) {
       setGameOver(true);
     } else {
       drawNewCards();
@@ -109,7 +115,6 @@ const GamePage = ({ cards }) => {
   };
 
   const drawNewCards = () => {
-    console.log("Drawing new cards...");
     const { risk: riskCount, mitigation: mitigationCount } = getCardCounts();
     const riskCards = cards.filter(card => card.src.includes('/Risk cards/'));
     const availableMitigationCards = cards.filter(card => card.src.includes('/Mitigation cards/') && !playedMitigationCards.includes(card.id));
@@ -122,8 +127,6 @@ const GamePage = ({ cards }) => {
     }
 
     const newMitigationCards = availableMitigationCards.slice(0, mitigationCount);
-    console.log("New risk cards:", newRiskCards);
-    console.log("New mitigation cards:", newMitigationCards);
     setRiskCards(newRiskCards);
     setMitigationCards(newMitigationCards);
   };
@@ -152,23 +155,17 @@ const GamePage = ({ cards }) => {
         newTempStats.money += riskCard.droppedMitigationCard.attributes.money;
 
         if (riskCardWentThrough) {
-          console.log(`Risk card ${riskCard.id} went through and a mitigation card was placed.`);
           newTempStats.scope += riskCard.attributes.scope;
           newTempStats.quality += riskCard.attributes.quality;
           newTempStats.time += riskCard.attributes.time;
           newTempStats.money += riskCard.attributes.money;
-        } else {
-          console.log(`Risk card ${riskCard.id} did not go through but a mitigation card was placed.`);
         }
       } else {
         if (riskCardWentThrough) {
-          console.log(`Risk card ${riskCard.id} went through without a mitigation card placed.`);
           newTempStats.scope += riskCard.attributes.scope;
           newTempStats.quality += riskCard.attributes.quality;
           newTempStats.time += riskCard.attributes.time;
           newTempStats.money += riskCard.attributes.money;
-        } else {
-          console.log(`Risk card ${riskCard.id} did not go through.`);
         }
       }
     });
@@ -185,7 +182,6 @@ const GamePage = ({ cards }) => {
   };
 
   const handleDrop = (mitigationCardId, riskCardId) => {
-    console.log(`Dropped mitigation card ${mitigationCardId} on risk card ${riskCardId}`);
     const droppedCard = mitigationCards.find(card => card.id === mitigationCardId);
     const riskCard = riskCards.find(card => card.id === riskCardId);
 
@@ -203,7 +199,7 @@ const GamePage = ({ cards }) => {
         money: prevTempStats.money + droppedCard.attributes.money + riskCard.attributes.money
       }));
     } else {
-      console.error(`Mitigation card with id ${mitigationCardId} not found`);
+      console.error(`Mitigation card with id ${mitigationCardId} or risk card with id ${riskCardId} not found`);
     }
   };
 
@@ -231,14 +227,14 @@ const GamePage = ({ cards }) => {
       <Stats stats={stats} />
       <div className="cards-container">
         <div className="risk-cards-container">
-          {riskCards.map(card => (
+          {riskCards.map(card => card ? (
             <RiskCard key={card.id} card={card} onDrop={handleDrop} openModal={openModal} />
-          ))}
+          ) : null)}
         </div>
         <div className="mitigation-cards">
-          {mitigationCards.map(card => (
+          {mitigationCards.map(card => card ? (
             <MitigationCard key={card.id} card={card} openModal={openModal} />
-          ))}
+          ) : null)}
         </div>
       </div>
       {modalImage && (
