@@ -13,11 +13,11 @@ The UI and cards are fully designed by us.
 Created at Tallinn University.
 
 <h2>Software used</h2>
-Discord-communication
-Reactjs-javascripti framework
-Canva - card design. <a href="https://www.canva.com/design/DAGHzrgkmQU/S8lpU7WQIY3Jz9kPI5O-QQ/edit">risk cards</a>
-Canva - <a href="https://www.canva.com/design/DAGH0KPXCLM/hpNL3x3yqOB3j4lMMSY3SQ/edit"> mitication cards</a>
-Unity- game development 
+Discord-communication <br>
+Reactjs-javascripti framework<br>
+Canva - card design. <a href="https://www.canva.com/design/DAGHzrgkmQU/S8lpU7WQIY3Jz9kPI5O-QQ/edit">risk cards</a> <br>
+Canva - <a href="https://www.canva.com/design/DAGH0KPXCLM/hpNL3x3yqOB3j4lMMSY3SQ/edit"> mitication cards</a><br>
+Unity- game development  <br>
 Figma- <a href="https://www.figma.com/design/uwN3eKdVG1K18j0c0wdXE6/Mitigate?node-id=0-1&t=dCoVEEmwbBbSax01-0">prototype</a>
 
 
