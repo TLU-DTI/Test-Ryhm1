@@ -25,12 +25,13 @@ React JS ver 18.3.1
 </ol>
 
 <br>
-liikmed: 
+<h2>Contributors:</h2>
 Eerik Poopuu
 Hannes Väster
 Kristjan Petersell
 Erik Brück
 Kristjan Peedisson
+<br>
 
 Vaja teha:
 -blogi
