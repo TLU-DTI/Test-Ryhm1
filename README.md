@@ -33,6 +33,8 @@ React JS ver 18.3.1
   </li>
   <li><strong>Start the development server:</strong>
     <pre><code>npm start</code></pre>
+    Runs the app in the development mode.
+    Open http://localhost:3000 to view it in your browser.
   </li>
 </ol>
 
