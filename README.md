@@ -1,11 +1,11 @@
 ## Mitigate
 <br>
 <h2>Pictures</h2>
-![image 1](https://github.com/TLU-DTI/Test-Ryhm1/assets/125663006/61d54e97-e020-4609-ac7a-ffe6a6526c55)
-![image 2](https://github.com/TLU-DTI/Test-Ryhm1/assets/125663006/a273f422-91f8-4d32-9001-df78b9262c63)
-![image 3](https://github.com/TLU-DTI/Test-Ryhm1/assets/125663006/58990942-1142-4fa7-ac8b-68cbd01b8c8e)
-![image 4](https://github.com/TLU-DTI/Test-Ryhm1/assets/125663006/7695baac-ce71-48f9-8014-1d2abdeb5848)
-![image 5](https://github.com/TLU-DTI/Test-Ryhm1/assets/125663006/26948f5b-d051-43f9-883e-1b0b0ca7e0d6)
+<li>![image 1](https://github.com/TLU-DTI/Test-Ryhm1/assets/125663006/61d54e97-e020-4609-ac7a-ffe6a6526c55)</li>
+<li>![image 2](https://github.com/TLU-DTI/Test-Ryhm1/assets/125663006/a273f422-91f8-4d32-9001-df78b9262c63)</li>
+<li>![image 3](https://github.com/TLU-DTI/Test-Ryhm1/assets/125663006/58990942-1142-4fa7-ac8b-68cbd01b8c8e)</li>
+<li>![image 4](https://github.com/TLU-DTI/Test-Ryhm1/assets/125663006/7695baac-ce71-48f9-8014-1d2abdeb5848)</li>
+<li>![image 5](https://github.com/TLU-DTI/Test-Ryhm1/assets/125663006/26948f5b-d051-43f9-883e-1b0b0ca7e0d6)</li>
 
 <br>
 <h2>Description</h2>
