@@ -1,7 +1,12 @@
 ## Mitigate
 <br>
 <h2>Pictures</h2>
-![image](https://github.com/TLU-DTI/Test-Ryhm1/assets/125663006/2f011c04-7b1c-408d-91ae-8be70000d4eb)
+![image 1](https://github.com/TLU-DTI/Test-Ryhm1/assets/125663006/61d54e97-e020-4609-ac7a-ffe6a6526c55)
+![image 2](https://github.com/TLU-DTI/Test-Ryhm1/assets/125663006/a273f422-91f8-4d32-9001-df78b9262c63)
+![image 3](https://github.com/TLU-DTI/Test-Ryhm1/assets/125663006/58990942-1142-4fa7-ac8b-68cbd01b8c8e)
+![image 4](https://github.com/TLU-DTI/Test-Ryhm1/assets/125663006/7695baac-ce71-48f9-8014-1d2abdeb5848)
+![image 5](https://github.com/TLU-DTI/Test-Ryhm1/assets/125663006/26948f5b-d051-43f9-883e-1b0b0ca7e0d6)
+
 <br>
 <h2>Description</h2>
 Mitigate is a physical card game, that is currently being made in web form via React JS. It is a card game teaching young entrepeneurs and business owners
