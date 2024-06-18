@@ -4,6 +4,7 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import './App.css';
 import GamePage from './components/GamePage';
+import Settings from './components/Settings';
 
 const cardImages1 = [
   { src: "/img/Mitigation cards/1.png", attributes: { scope: 5, quality: 5, time: -5, money: 0 } },
@@ -151,10 +152,16 @@ function App() {
       <div className="App">
         <div className="app-header"><h1>Mitigate</h1></div>
         <br />
-        {location.pathname === '/' && <button onClick={shuffleCards}>New game</button>}
+        {location.pathname === '/' && (
+          <>
+            <button onClick={shuffleCards}>New game</button>
+            <button onClick={() => navigate('/settings')}>Settings</button>
+          </>
+        )}
         <Routes>
           <Route path="/" element={<div></div>} />
           <Route path="/game" element={<GamePage cards={cards} />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
       </div>
     </DndProvider>
