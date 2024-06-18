@@ -1,0 +1,62 @@
+.leaderboards {
+    text-align: center;
+    color: aliceblue;
+  }
+  
+  .scores-list {
+    margin-top: 20px;
+  }
+  
+  .score-entry {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .score-entry:hover {
+    background-color: rgba(255, 105, 180, 0.5);
+  }
+  
+  .score-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .score-name {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .score-date {
+    font-size: 14px;
+    color: #DDA0DD;
+  }
+  
+  .score-details {
+    margin-top: 10px;
+  }
+  
+  .stat, .mitigations-count, .round-count, .difficulty {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .back-menu-button {
+    font-family: Rajdhani;
+    font-size: 20px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #FF69B4;
+    border: none;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+  }
+  
+  .back-menu-button:hover {
+    background-color: #DDA0DD;
+  }  

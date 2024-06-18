@@ -1,32 +1,33 @@
-body{
+body {
   overflow-y: hidden;
 }
 
 .game-header {
+  left: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   box-sizing: border-box;
-  padding-bottom: 20px;
-  gap: 20px;
+  padding-bottom: 1vh;
+  gap: 1vw;
 }
 
 .back-menu-button, .end-round-button {
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 1vh 2vw;
+  font-size: 2vh; /* Use vh for relative sizing */
   cursor: pointer;
 }
 
 .round-counter {
-  font-size: 20px;
+  font-size: 3vh; /* Use vh for relative sizing */
   flex-grow: 1;
   text-align: center;
   color: #f7f5f5;
-  border: 2px solid black; /* Black border */
-  padding: 10px; /* Padding inside the box */
-  border-radius: 5px; /* Rounded corners */
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  border: 0.2vh solid black; 
+  padding: 1vh; 
+  border-radius: 1vh; 
+  background-color: rgba(0, 0, 0, 0.5); 
 }
 
 .cards-container {
@@ -35,59 +36,44 @@ body{
   align-items: center;
   flex-grow: 1;
   width: 100%;
+  height: 80vh; /* Ensure the container takes up most of the viewport height */
+  padding: 1vh; /* Add padding for better spacing */
+  box-sizing: border-box;
 }
 
-.risk-cards-container {
+.risk-cards-container, .mitigation-cards {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap; /* Allow wrapping of cards */
   justify-content: center;
-  gap: 50px; /* Adjust gap between risk cards as needed */
-}
-
-.mitigation-cards{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 20px; /* Adjust gap between mitigation cards as needed */
+  gap: 2vh; /* Use vh for gap for responsive spacing */
 }
 
 .risk-card-container {
   position: relative;
+  margin-bottom: 1vh;
 }
 
 .mitigation-card.on-risk-card {
   position: absolute;
   top: 0;
-  left: -40px;
-  width: 100%; /* Adjust as needed to fit properly */
-  height: 100%; /* Adjust as needed to fit properly */
-  transform: none; /* Reset any transformation on hover */
-  cursor: default; /* Reset cursor to default */
-  z-index: 1; /* Ensure it appears on top */
+  left: -17%; /* Use percentage for responsive positioning */
+  width: 100%; 
+  height: 100%; 
+  transform: none; 
+  cursor: default; 
+  z-index: 1; 
 }
 
-.risk-card {
-  width: 130px;
+.risk-card, .mitigation-card {
+  width: 8.7vw; /* Use vw for width for responsive sizing */
   height: auto;
   transition: transform 0.2s;
 }
 
-.risk-card:hover {
-  transform: scale(1.1); /* Slightly enlarge on hover */
+.risk-card:hover, .mitigation-card:hover {
+  transform: scale(1.1); 
 }
 
-.mitigation-card {
-  width: 130px;
-  height: auto;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.mitigation-card:hover {
-  transform: scale(1.1);
-}
-
-/* Modal styles */
 .modal {
   position: fixed;
   top: 0;
@@ -107,17 +93,39 @@ body{
 }
 
 .mitigation-deck {
-  width: 300px; /* Adjust size as needed */
-  height: 150px; /* Adjust size as needed */
+  width: 18vw; /* Use vw for responsive sizing */
+  height: 10vw; /* Use vw for responsive sizing */
   border: 2px dashed #ccc;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 2vh;
   cursor: pointer;
   position: relative;
 }
 
 .mitigation-deck-text {
-  color: transparent; /* Hide the text */
+  color: transparent; 
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .back-menu-button, .end-round-button {
+    font-size: 0.8rem;
+    padding: 0.8rem 1.6rem;
+  }
+
+  .round-counter {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+
+  .risk-card, .mitigation-card {
+    width: 20vw;
+  }
+
+  .mitigation-deck {
+    width: 32vw;
+    height: 16vw;
+  }
 }

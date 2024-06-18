@@ -1,4 +1,48 @@
 .settings {
-    padding: 20px;
-    color: aliceblue;
-  }  
+  padding: 20px;
+  color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+input, select {
+  font-size: 16px;
+  padding: 5px;
+  margin-left: 10px;
+}
+
+.save-button,
+.back-menu-button {
+  font-family: Rajdhani;
+  font-size: 20px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  background-color: #FF69B4;
+  border: none;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.save-button:hover,
+.back-menu-button:hover {
+  background-color: #DDA0DD;
+}
+
+.save-confirmation {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #00FF00; /* Green color to indicate success */
+  animation: fadeOut 2s forwards;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}

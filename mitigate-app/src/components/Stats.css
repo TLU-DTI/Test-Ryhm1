@@ -1,17 +1,27 @@
 .stats {
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.5); /* Matching the background color of other boxes */
-    top: 10rem;
-    right: 20rem;
-    padding: 20px; /* More padding for better spacing */
-    color: white; /* Matching text color with end round and back to menu buttons */
-    font-weight: bold;
-    font-size: 1.5rem; /* Adjusted font size for better readability */
-    border: 2px solid #FF69B4; /* Border color to match buttons */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Adding a shadow for a nicer look */
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 8vh; /* Adjusted for a more centered position */
+  right: 8vw; /* Adjusted for a more centered position */
+  padding: 3vh; /* Increased padding for more space inside the stats box */
+  color: white;
+  font-weight: bold;
+  font-size: 2.5vh; /* Increased font size for better readability */
+  border: 2px solid #FF69B4;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.stats div {
+  margin-bottom: 1.5vh; /* Increased margin for better spacing between stats */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .stats {
+    top: 5vh;
+    right: 5vw;
+    padding: 2vh;
+    font-size: 2vh;
   }
-  
-  .stats div {
-    margin-bottom: 10px; /* More spacing between stats */
-  }
+}

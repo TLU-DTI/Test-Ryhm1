@@ -1,0 +1,83 @@
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './Leaderboards.css';
+
+const Leaderboards = () => {
+  const [scores, setScores] = useState([]);
+  const [expandedScore, setExpandedScore] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const savedScores = JSON.parse(localStorage.getItem('scores')) || [];
+    // Sort the scores in reverse order to show the latest scores at the top
+    const sortedScores = savedScores.sort((a, b) => new Date(b.date) - new Date(a.date));
+    // Only take the latest 6 scores
+    setScores(sortedScores.slice(0, 6));
+  }, []);
+
+  const toggleExpandedScore = (index) => {
+    if (expandedScore === index) {
+      setExpandedScore(null);
+    } else {
+      setExpandedScore(index);
+    }
+  };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+    const year = date.getFullYear();
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    return `${day}/${month}/${year} ${hours}:${minutes}`;
+  };
+
+  const clearLeaderboards = () => {
+    localStorage.setItem('scores', JSON.stringify([]));
+    setScores([]);
+  };
+
+  return (
+    <div className="leaderboards">
+      <div className="scores-list">
+        {scores.map((score, index) => (
+          <div key={index} className="score-entry">
+            <div className="score-summary" onClick={() => toggleExpandedScore(index)}>
+              <span className="score-name">{score.name}</span>
+              <span className="score-date">{formatDate(score.date)}</span>
+            </div>
+            {expandedScore === index && (
+              <div className="score-details">
+                <div className="stat">Scope: {score.finalStats.scope}</div>
+                <div className="stat">Quality: {score.finalStats.quality}</div>
+                <div className="stat">Time: {score.finalStats.time}</div>
+                <div className="stat">Money: {score.finalStats.money}</div>
+                <div className="mitigations-count">
+                  Risks mitigated: {score.mitigationsCount}
+                </div>
+                <div className="round-count">
+                  Rounds played: {score.roundsPlayed}
+                </div>
+                <div className="difficulty">
+                  Difficulty: {score.difficulty}
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+      <div className="buttons">
+        <button className="clear-leaderboards-button" onClick={clearLeaderboards}>
+          Clear Leaderboards
+        </button>
+        <br></br>
+        <button className="back-menu-button" onClick={() => navigate('/')}>
+          Back to Menu
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default Leaderboards;
