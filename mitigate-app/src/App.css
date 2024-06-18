@@ -1,6 +1,7 @@
 .App {
   position: relative;
   text-align: center;
+  justify-content: center;
   font-family: Rajdhani;
   display: flex;
   flex-direction: column;
@@ -9,8 +10,24 @@
   background-image: url(/public/background.png);
   background-repeat: no-repeat; 
   background-position: center;
-}
+  background-size: cover;
 
+}
+.App::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10px;
+  width: 30%;
+  height: 400px;
+  background-image: url(/public/ad.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  
+  
+  z-index: 1; /* Asetab pseudoelemendi taustale */
+  opacity: 5; /* Valikuline: määrab läbipaistvuse */
+}
 /* Päise stiil */
 .app-header {
   font-size: 24px;
@@ -20,7 +37,6 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* Nupu stiil */
 button {
   font-family: Rajdhani;
   font-size: 20px;
@@ -31,6 +47,7 @@ button {
   color: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
+  
 }
 
 button:hover {
