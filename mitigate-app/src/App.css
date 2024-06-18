@@ -1,23 +1,41 @@
 .App {
+  position: relative;
   text-align: center;
   font-family: Rajdhani;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  background-image: url(/public/background.png);
+  background-repeat: no-repeat; 
+  background-position: center;
 }
 
+/* Päise stiil */
+.app-header {
+  font-size: 24px;
+  color: #DDA0DD; /* Pastelne lilla */
+  background: linear-gradient(45deg, #DDA0DD, #FF69B4); /* Metallic lilla/roosa */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Nupu stiil */
 button {
   font-family: Rajdhani;
   font-size: 20px;
   padding: 10px 20px;
   margin-top: 20px;
+  background-color: #FF69B4; /* Roosa */
+  border: none;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
 }
 
-.app-header {
-  font-size: 24px;
-  padding: 20px;
-}
+button:hover {
+  background-color: #DDA0DD; }
+
 
 h1 {
   margin: 0;
