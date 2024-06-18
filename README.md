@@ -1,5 +1,4 @@
-# Test-Ryhm1
-<h1>Mitigate</h1>
+## Mitigate
 <br>
 <h2>Pictures</h2>
 ![image](https://github.com/TLU-DTI/Test-Ryhm1/assets/125663006/2f011c04-7b1c-408d-91ae-8be70000d4eb)
@@ -14,8 +13,10 @@ React JS ver 18.3.1
 
 <h2>How to run</h2>
 <ol>
+  <li><strong>Make sure Node.js is installed on your system</strong></li>
   <li><strong>Open the folder TEST-RYHM1 in terminal</strong></li>
-  <li><strong>Type 'cd mitigate-app'</strong></li>
+  <li><strong>Open mitigate-app directory:</strong></li>
+  <pre><code>cd mitigate-app</code></pre>
   <li><strong>Install dependencies:</strong>
     <pre><code>npm install</code></pre>
   </li>
