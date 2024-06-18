@@ -11,9 +11,15 @@ The UI and cards are fully designed by us.
 Created at Tallinn University.
 React JS ver 18.3.1
 
+<h2>Requirements</h2>
+<ol>
+  <li>[Node.js](https://nodejs.org/)</li>
+  <li><strong>npm</strong> (Node Package Manager): npm comes bundled with Node.js and is used to manage the packages and dependencies of your React application.</li>
+  <li><strong>(Optional) </strong>Code editor</li>
+</ol>
+
 <h2>How to run</h2>
 <ol>
-  <li><strong>Make sure Node.js is installed on your system</strong></li>
   <li><strong>Open the folder TEST-RYHM1 in terminal</strong></li>
   <li><strong>Open mitigate-app directory:</strong></li>
   <pre><code>cd mitigate-app</code></pre>
