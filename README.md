@@ -1,5 +1,5 @@
-# Test-Ryhm1
-<h1>Mitigate</h1>
+# Ryhm1
+<h1>Mitigate Online</h1>
 
 <br>
 <h2>Pictures</h2>
@@ -11,6 +11,22 @@ about the risks that may surface in the business world and how to <strong>mitiga
 The UI and cards are fully designed by us.
 <h3>Tallinn University School of Digital Technologies</h3>
 Created at Tallinn University.
+
+<h2>Software used</h2>
+Discord-communication
+Reactjs-javascripti framework
+Canva - card design. <a href="https://www.canva.com/design/DAGHzrgkmQU/S8lpU7WQIY3Jz9kPI5O-QQ/edit">risk cards</a>
+Canva - <a href="https://www.canva.com/design/DAGH0KPXCLM/hpNL3x3yqOB3j4lMMSY3SQ/edit"> mitication cards</a>
+Unity- game development 
+Figma- <a href="https://www.figma.com/design/uwN3eKdVG1K18j0c0wdXE6/Mitigate?node-id=0-1&t=dCoVEEmwbBbSax01-0">prototype</a>
+
+
+<h2> Goals</h2>
+The player will learn:
+Examples of real risks and their potential impact on project general objectives
+Examples of countermeasures and their impact on risks
+The iterative nature of risk management
+How is risk management integrated with the rest of the project management field of expertise?
 
 <h2>How to run</h2>
 <ol>
