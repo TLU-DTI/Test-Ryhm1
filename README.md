@@ -14,6 +14,7 @@ React JS ver 18.3.1
 
 <h2>How to run</h2>
 <ol>
+  <li><strong>Make sure Node.js is installed on your system</strong></li>
   <li><strong>Open the folder TEST-RYHM1 in terminal</strong></li>
   <li><strong>Type 'cd mitigate-app'</strong></li>
   <li><strong>Install dependencies:</strong>
