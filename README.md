@@ -21,11 +21,11 @@ Unity- game development  <br>
 Figma- <a href="https://www.figma.com/design/uwN3eKdVG1K18j0c0wdXE6/Mitigate?node-id=0-1&t=dCoVEEmwbBbSax01-0">prototype</a>
 
 <h2> Goals</h2>
-The player will learn:
-Examples of real risks and their potential impact on project general objectives
-Examples of countermeasures and their impact on risks
-The iterative nature of risk management
-How is risk management integrated with the rest of the project management field of expertise?
+The player will learn: <br>
+1.Examples of real risks and their potential impact on project general objectives <br>
+2.Examples of countermeasures and their impact on risks<br>
+3.The iterative nature of risk management<br>
+4.How is risk management integrated with the rest of the project management field of expertise?
 
 <h2>How to run</h2>
 <ol>
