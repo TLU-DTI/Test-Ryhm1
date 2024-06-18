@@ -30,10 +30,10 @@ This was created as part of the summer internship course in the Informatics prog
 
 <h2> Goals</h2>
 The player will learn: <br>
-1. Examples of real risks and their potential impact on project general objectives <br>
-2. Examples of countermeasures and their impact on risks<br>
-3. The iterative nature of risk management<br>
-4. How is risk management integrated with the rest of the project management field of expertise?
+<li>Examples of real risks and their potential impact on project general objectives</li>
+<li>Examples of countermeasures and their impact on risks</li>
+<li>The iterative nature of risk management</li>
+<li>How is risk management integrated with the rest of the project management field of expertise?</li>
 <br>
 <h2>Contributors</h2>
 <li>Eerik Poopuu</li>
