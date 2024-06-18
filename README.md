@@ -1,4 +1,4 @@
-##Mitigate
+## Mitigate
 <br>
 <h2>Pictures</h2>
 ![image](https://github.com/TLU-DTI/Test-Ryhm1/assets/125663006/2f011c04-7b1c-408d-91ae-8be70000d4eb)
