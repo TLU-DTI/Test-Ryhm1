@@ -28,17 +28,6 @@ Erik Brück
 <br>
 Kristjan Peedisson
 
-Vaja teha:
--blogi
--riski kaardid:
-  -nimetused
-  -disain
-  -desc.
-  -event?
-  -stat changes
-  -picture
--action buttons (action kaardid replacement)
--Unity/Gamemaker?
--prototype (base game)
--visual design (theme, graphics)
--game design
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
