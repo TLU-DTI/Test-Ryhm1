@@ -2973,22 +2973,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Background
       objectReference: {fileID: 0}
-    - target: {fileID: 5145684067759198703, guid: 20e252b4bd1a16d4fb21596ab80a6ccc, type: 3}
-      propertyPath: m_Color.b
-      value: 0.6291638
-      objectReference: {fileID: 0}
-    - target: {fileID: 5145684067759198703, guid: 20e252b4bd1a16d4fb21596ab80a6ccc, type: 3}
-      propertyPath: m_Color.g
-      value: 0.09868988
-      objectReference: {fileID: 0}
-    - target: {fileID: 5145684067759198703, guid: 20e252b4bd1a16d4fb21596ab80a6ccc, type: 3}
-      propertyPath: m_Color.r
-      value: 0.6301887
-      objectReference: {fileID: 0}
-    - target: {fileID: 8494151940082983795, guid: 20e252b4bd1a16d4fb21596ab80a6ccc, type: 3}
-      propertyPath: m_CullTransparentMesh
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
