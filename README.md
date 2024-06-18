@@ -27,10 +27,15 @@ React JS ver 18.3.1
 <br>
 <h2>Contributors:</h2>
 Eerik Poopuu
+<br>
 Hannes Väster
+<br>
 Kristjan Petersell
+<br>
 Erik Brück
+<br>
 Kristjan Peedisson
+<br>
 <br>
 
 Vaja teha:
