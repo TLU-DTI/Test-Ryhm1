@@ -388,6 +388,7 @@
 "Assets/Scripts/MainMenu.cs"
 "Assets/Scripts/MitigationCard.cs"
 "Assets/Scripts/NextTurn.cs"
+"Assets/Scripts/OptionsManager.cs"
 "Assets/Scripts/RiskCard.cs"
 -langversion:9.0
 /deterministic

@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\NextTurn.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\OptionsManager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\RiskCard.cs" />
     <Compile Include="Assets\Scripts\MitigationCard.cs" />
