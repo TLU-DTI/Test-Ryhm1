@@ -3,7 +3,9 @@
   color: aliceblue;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 label {
@@ -11,10 +13,14 @@ label {
   font-size: 18px;
 }
 
-input, select {
-  font-size: 16px;
-  padding: 5px;
-  margin-left: 10px;
+.slider-container {
+  margin-top: 10px;
+  width: 14%;
+}
+
+.slider {
+  
+  width: calc(100% - 20px); /* Arvestab siltide jaoks lisatud polstri ruumi (10px mõlemal küljel) */
 }
 
 .save-button,
@@ -38,7 +44,7 @@ input, select {
 .save-confirmation {
   margin-top: 10px;
   font-size: 18px;
-  color: #00FF00; /* Green color to indicate success */
+  color: #00FF00; /* Roheline värv, et näidata edukust */
   animation: fadeOut 2s forwards;
 }
 

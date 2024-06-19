@@ -11,6 +11,7 @@ const playSound = () => {
 const Settings = () => {
   const [difficulty, setDifficulty] = useState('normal');
   const [name, setName] = useState('');
+  const [sliderValue, setSliderValue] = useState(50); // Uus state slideri väärtuse jaoks
   const [isSaved, setIsSaved] = useState(false);
   const navigate = useNavigate();
 
@@ -39,6 +40,14 @@ const Settings = () => {
     playSound();
   };
 
+  const handleSliderChange = (event) => {
+    const sliderVal = parseInt(event.target.value);
+    setSliderValue(sliderVal);
+    // Lisaks salvesta slideri väärtus, kui soovite seda hiljem kasutada
+    localStorage.setItem('sliderValue', sliderVal.toString());
+    playSound();
+  };
+
   return (
     <div className="settings">
       <label>
@@ -49,16 +58,32 @@ const Settings = () => {
           <option value="hard">Hard</option>
         </select>
       </label>
+      
       <br />
       <label>
         Name:
         <input type="text" value={name} onChange={handleNameChange} />
       </label>
+      
+      <br />
+      <div className="slider-container">
+        <label>
+          Music:
+          <input 
+            type="range" 
+            min="0" 
+            max="100" 
+            className="slider"
+          />
+        </label>
+      </div>
+      
       <br />
       {isSaved && <div className="save-confirmation">Settings Saved!</div>}
       <button className="back-menu-button" onClick={() => { navigate('/'); playSound(); }}>Back to Menu</button>
     </div>
   );
+  
 };
 
 export default Settings;
