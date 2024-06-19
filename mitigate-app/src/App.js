@@ -7,6 +7,7 @@ import './App.css';
 import GamePage from './components/GamePage';
 import Settings from './components/Settings';
 import Leaderboards from './components/Leaderboards';
+import HowToPlay from './components/HowToPlay.js'; 
 import cardImages1 from './data/cardImages1';
 import cardImages2 from './data/cardImages2';
 
@@ -23,6 +24,8 @@ const Header = ({ pathname }) => {
         return 'Settings';
       case '/leaderboards':
         return 'Leaderboards';
+        case '/how-to-play': 
+        return 'How to Play';
       default:
         return 'Mitigate';
     }
@@ -40,6 +43,7 @@ const Header = ({ pathname }) => {
 const Menu = ({ shuffleCards, navigate }) => (
   <div className="menu-box">
     <button onClick={() => { shuffleCards(); playSound(); }}>New game</button>
+    <button onClick={() => { navigate('/how-to-play'); playSound(); }}>How to play</button>
     <button onClick={() => { navigate('/settings'); playSound(); }}>Settings</button>
     <button onClick={() => { navigate('/leaderboards'); playSound(); }}>Leaderboards</button>
   </div>
@@ -69,6 +73,7 @@ function App() {
           <Route path="/game" element={<GamePage cards={cards} />} />
           <Route path="/leaderboards" element={<Leaderboards />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/how-to-play" element={<HowToPlay />} />
         </Routes>
       </div>
     </DndProvider>
