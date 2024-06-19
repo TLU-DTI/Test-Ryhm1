@@ -32,6 +32,7 @@ public class MitigationCard : MonoBehaviour, IPointerClickHandler, IBeginDragHan
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         originalPosition = rectTransform.anchoredPosition;
+        Debug.Log("Created ActionCard: " + gameObject.name + " with ID = " + ID);
 
         GameObject zoomCanvas = GameObject.Find("ZoomCanvas");
         if (zoomCanvas != null)
@@ -99,7 +100,7 @@ public class MitigationCard : MonoBehaviour, IPointerClickHandler, IBeginDragHan
     public void Deletion()
     {
         Destroy(gameObject);
-        gameManager.actionCardsInHand[ID] = null;
+        gameManager.actionCardsInHand[ID] = -1;
         gameManager.DelayedAddStats(scope, quality, time, money);
     }
 

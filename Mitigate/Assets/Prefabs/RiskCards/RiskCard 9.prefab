@@ -97,16 +97,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7228299350632617476, guid: f4011a94063901d47b8961db99e2b7df, type: 3}
-      propertyPath: money
+      propertyPath: time
       value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 7228299350632617476, guid: f4011a94063901d47b8961db99e2b7df, type: 3}
+      propertyPath: money
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228299350632617476, guid: f4011a94063901d47b8961db99e2b7df, type: 3}
       propertyPath: scope
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7228299350632617476, guid: f4011a94063901d47b8961db99e2b7df, type: 3}
       propertyPath: quality
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

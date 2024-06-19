@@ -14,12 +14,12 @@ public class GameManager : MonoBehaviour
     // Risk cards
     public RiskCard[] riskCards;
     public List<int> currentRiskCards;
-    public List<int?> riskCardsInPlay;
+    public List<int> riskCardsInPlay;
 
     // Action cards
     public MitigationCard[] actionCards;
     public List<int> currentActionCards;
-    public List<int?> actionCardsInHand;
+    public List<int> actionCardsInHand;
 
     // Selected cards
     public RiskCard selectedRiskCard;
@@ -62,15 +62,15 @@ public class GameManager : MonoBehaviour
         GameScene = "GameScene";
         gameOverUI.SetActive(false);
         InitializeCards();
-        actionCardsInHand = new List<int?>();
+        actionCardsInHand = new List<int>();
         for (int i = 0; i < actionCardsOnField; i++)
         {
-            actionCardsInHand.Add(null);
+            actionCardsInHand.Add(-1);
         }
-        riskCardsInPlay = new List<int?>();
+        riskCardsInPlay = new List<int>();
         for (int i = 0; i < riskCardsOnField; i++)
         {
-            riskCardsInPlay.Add(null);
+            riskCardsInPlay.Add(-1);
         }
         generateRiskCards();
         generateActionCards();
@@ -91,6 +91,11 @@ public class GameManager : MonoBehaviour
         {
             EndGame();
         }
+    }
+
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void EndGame()
@@ -230,18 +235,19 @@ public class GameManager : MonoBehaviour
     {
         if (currentActionCards.Count == 0)
         {
-            Debug.LogError("currentRiskCards is empty.");
+            Debug.LogError("currentActionCards is empty.");
         } else 
         {
             for (int i = 0; i < actionCardsOnField; i++)
             {   
-                if (actionCardsInHand[i] == null)
+                if (actionCardsInHand[i] == -1)
                 {
                     if (currentActionCards.Count > 0)
                     {
                         int randomIndex = UnityEngine.Random.Range(0, currentActionCards.Count);
                         actionCardsInHand[i] = currentActionCards[randomIndex];
-                        currentActionCards.Remove(randomIndex);
+                        currentActionCards.Remove(actionCardsInHand[i]);
+                        Debug.Log("Added " + currentActionCards[randomIndex] + " to actionCardsInHand[" + i + "] and removed it from currentActionCards[" + randomIndex + "]");
                     }
                     else
                     {

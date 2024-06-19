@@ -94,6 +94,6 @@ MonoBehaviour:
   money: -10
   mitigated: 0
   selected: 0
-  chance: 50
+  chance: 65
   zoomPanel: {fileID: 0}
   zoomImage: {fileID: 0}

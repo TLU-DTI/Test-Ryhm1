@@ -96,6 +96,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: ActionCard 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6511602008611687208, guid: 5409b6c95869e76449d43c708074f877, type: 3}
+      propertyPath: time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511602008611687208, guid: 5409b6c95869e76449d43c708074f877, type: 3}
+      propertyPath: money
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511602008611687208, guid: 5409b6c95869e76449d43c708074f877, type: 3}
+      propertyPath: scope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511602008611687208, guid: 5409b6c95869e76449d43c708074f877, type: 3}
+      propertyPath: quality
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
