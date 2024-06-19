@@ -11,15 +11,17 @@ const playSound = () => {
 const Settings = () => {
   const [difficulty, setDifficulty] = useState('normal');
   const [name, setName] = useState('');
-  const [sliderValue, setSliderValue] = useState(50); // Uus state slideri väärtuse jaoks
+  const [sliderValue, setSliderValue] = useState(50); // State for slider value
   const [isSaved, setIsSaved] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const savedDifficulty = localStorage.getItem('difficulty') || 'normal';
     const savedName = localStorage.getItem('name') || '';
+    const savedSliderValue = localStorage.getItem('sliderValue');
     setDifficulty(savedDifficulty);
     setName(savedName);
+    setSliderValue(savedSliderValue !== null ? parseInt(savedSliderValue) : 50);
   }, []);
 
   const handleDifficultyChange = (event) => {
@@ -43,7 +45,6 @@ const Settings = () => {
   const handleSliderChange = (event) => {
     const sliderVal = parseInt(event.target.value);
     setSliderValue(sliderVal);
-    // Lisaks salvesta slideri väärtus, kui soovite seda hiljem kasutada
     localStorage.setItem('sliderValue', sliderVal.toString());
     playSound();
   };
@@ -73,6 +74,8 @@ const Settings = () => {
             type="range" 
             min="0" 
             max="100" 
+            value={sliderValue} // Bind slider value
+            onChange={handleSliderChange} // Handle slider change
             className="slider"
           />
         </label>
@@ -83,7 +86,6 @@ const Settings = () => {
       <button className="back-menu-button" onClick={() => { navigate('/'); playSound(); }}>Back to Menu</button>
     </div>
   );
-  
 };
 
 export default Settings;

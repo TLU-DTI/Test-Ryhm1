@@ -44,3 +44,41 @@ label {
   0% { opacity: 1; }
   100% { opacity: 0; }
 }
+
+input[type="text"] {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid #FF69B4;
+  background: rgba(255, 255, 255, 0.8);
+  color: #282c34;
+  margin-bottom: 20px;
+  width: 80%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease;
+}
+
+select {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid #FF69B4;
+  background: rgba(255, 255, 255, 0.8);
+  color: #282c34;
+  margin-bottom: 20px;
+  width: 80%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, transform 0.2s ease;
+}
+
+select:hover {
+  border-color: #DDA0DD;
+  transform: scale(1.05);
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}

@@ -1,0 +1,24 @@
+.risk-log-container {
+    position: absolute;
+    top: 8vh; /* Align with the top of the Stats component */
+    right: 8vw; /* Adjust for right-side positioning */
+    padding: 3vh; /* Same padding as Stats */
+    color: #ff0088;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: bold;
+    font-size: 1.3em; /* Same font size as Stats */
+    text-align: left;
+    background: rgba(0, 0, 0, 0.5); /* Same background as Stats */
+    border-radius: 10px; /* Same border radius as Stats */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Same box shadow as Stats */
+    width: 15%; /* Adjust width as needed */
+    max-height: 80vh; /* Ensure it doesn't exceed the viewport height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .log-message {
+    margin-bottom: 5px;
+    padding: 5px;
+    border: 1px solid #FF1493;
+  }  

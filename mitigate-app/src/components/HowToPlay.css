@@ -1,5 +1,89 @@
-.how-to-play{
-    background-color: #DDA0DD;
-    color: #ed07ed;
-  
+.how-to-play-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #FFFFFF;
+  background-color: #282c34;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: auto;
+  animation: fadeIn 1s ease-in-out;
+  overflow: hidden; /* Ensure no overflow beyond container */
+}
+
+.how-to-play {
+  background-color: #4B0082;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-height: 60vh; /* Limit height to enable scrolling */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.how-to-play h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #FF69B4;
+}
+
+.how-to-play ol {
+  text-align: left;
+  padding-left: 20px;
+  line-height: 1.6;
+  font-size: 1.2em;
+  animation: slideIn 1s ease-in-out;
+}
+
+.how-to-play ol li {
+  margin-bottom: 10px;
+}
+
+.back-button {
+  font-family: Rajdhani;
+  font-size: 20px;
+  padding: 10px 20px;
+  margin-top: 30px;
+  background-color: #FF69B4;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  position: sticky; /* Ensure button remains fixed when scrolling */
+  bottom: 20px; /* Adjust position from bottom as needed */
+}
+
+.back-button:hover {
+  background-color: #DDA0DD;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .how-to-play-container {
+    padding: 10px;
   }
+
+  .how-to-play {
+    max-height: 50vh;
+  }
+
+  .back-button {
+    font-size: 16px;
+    bottom: 10px; /* Adjusted position from bottom for smaller screens */
+  }
+}

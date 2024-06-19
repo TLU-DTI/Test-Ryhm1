@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDrag, useDrop } from 'react-dnd';
 import Stats from './Stats';
+import RiskLog from './RiskLog';
 import './Stats.css';
 import GameEndScreen from './GameEndScreen';
 import './GamePage.css';
@@ -95,6 +96,8 @@ const GamePage = ({ cards }) => {
   const [stats, setStats] = useState(initialStats[difficulty]);
   const [tempStats, setTempStats] = useState({ scope: 0, quality: 0, time: 0, money: 0 });
   const [gameOver, setGameOver] = useState(false);
+  const [riskLogs, setRiskLogs] = useState([['Initial log']]);
+  const [previousRoundLogs, setPreviousRoundLogs] = useState([]);
 
   // Create a ref for the background audio
   const audioRef = useRef(new Audio("sounds/Breath-within.mp3"));
@@ -121,9 +124,10 @@ const GamePage = ({ cards }) => {
     console.log("Temp stats updated:", tempStats);
   }, [tempStats]);
 
-  // Start playing background audio 3 seconds after the component mounts
   useEffect(() => {
     const timer = setTimeout(() => {
+      const savedSliderValue = parseInt(localStorage.getItem('sliderValue'));
+      audioRef.current.volume = savedSliderValue !== null ? savedSliderValue / 100 : 0.5; // Set the volume based on the saved slider value
       audioRef.current.loop = true;
       audioRef.current.play();
     }, 1000);
@@ -135,6 +139,12 @@ const GamePage = ({ cards }) => {
       audioRef.current.currentTime = 0;
     };
   }, []);
+
+  useEffect(() => {
+    if (round > 1) {
+      setPreviousRoundLogs(riskLogs[riskLogs.length - 1]);
+    }
+  }, [riskLogs]);
 
   const getCardCounts = () => {
     if (round >= 1 && round <= 3) {
@@ -166,6 +176,7 @@ const GamePage = ({ cards }) => {
 
   const endRound = () => {
     const newTempStats = { scope: 0, quality: 0, time: 0, money: 0 };
+    const roundRiskLogs = [];
 
     const probabilityCheck = (probability) => {
       const randomValue = Math.random() * 100;
@@ -181,12 +192,13 @@ const GamePage = ({ cards }) => {
     riskCards.forEach((riskCard, index) => {
       const riskCardWentThrough = probabilityCheck(riskCard.attributes.probability);
       const cardNumber = index + 1;
+      let logMessage = '';
 
       if (riskCard.droppedMitigationCard) {
         if (riskCardWentThrough) {
-          console.log(`Risk card ${cardNumber}: went through AND a mitigation card was placed on top`);
+          logMessage = `Risk card ${cardNumber}: went through AND a mitigation card was placed on top`;
         } else {
-          console.log(`Risk card ${cardNumber}: hasn't gone through but a mitigation card was placed on top anyway`);
+          logMessage = `Risk card ${cardNumber}: hasn't gone through but a mitigation card was placed on top anyway`;
         }
         newTempStats.scope += riskCard.droppedMitigationCard.attributes.scope;
         newTempStats.quality += riskCard.droppedMitigationCard.attributes.quality;
@@ -201,17 +213,20 @@ const GamePage = ({ cards }) => {
         }
       } else {
         if (riskCardWentThrough) {
-          console.log(`Risk card ${cardNumber}: went through without a mitigation card placed on top`);
+          logMessage = `Risk card ${cardNumber}: went through without a mitigation card placed on top`;
           newTempStats.scope += riskCard.attributes.scope;
           newTempStats.quality += riskCard.attributes.quality;
           newTempStats.time += riskCard.attributes.time;
           newTempStats.money += riskCard.attributes.money;
         } else {
-          console.log(`Risk card ${cardNumber}: hasn't gone through AND a mitigation card HASN'T been placed on top`);
+          logMessage = `Risk card ${cardNumber}: hasn't gone through AND a mitigation card HASN'T been placed on top`;
         }
       }
+
+      roundRiskLogs.push(logMessage);
     });
 
+    setRiskLogs(prevLogs => [...prevLogs, roundRiskLogs]);
     setStats(prevStats => ({
       scope: prevStats.scope + newTempStats.scope,
       quality: prevStats.quality + newTempStats.quality,
@@ -291,6 +306,7 @@ const GamePage = ({ cards }) => {
         <button className="end-round-button" onClick={handleEndRoundClick}>End Round</button>
       </div>
       <Stats stats={stats} />
+      <RiskLog logs={previousRoundLogs} />
       <div className="cards-container">
         <div className="risk-cards-container">
           {riskCards.map(card => card ? (

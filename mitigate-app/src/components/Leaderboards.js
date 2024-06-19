@@ -14,19 +14,12 @@ const Leaderboards = () => {
 
   useEffect(() => {
     const savedScores = JSON.parse(localStorage.getItem('scores')) || [];
-    // Sort the scores in reverse order to show the latest scores at the top
-    const sortedScores = savedScores.sort((a, b) => new Date(b.date) - new Date(a.date));
-    // Only take the latest 6 scores
-    setScores(sortedScores.slice(0, 6));
+    // Sort scores by roundsPlayed in descending order
+    const sortedScores = savedScores.sort((a, b) => b.roundsPlayed - a.roundsPlayed);
+    // Take only the top 7 scores
+    const topScores = sortedScores.slice(0, 7);
+    setScores(topScores);
   }, []);
-
-  const toggleExpandedScore = (index) => {
-    if (expandedScore === index) {
-      setExpandedScore(null);
-    } else {
-      setExpandedScore(index);
-    }
-  };
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -46,7 +39,15 @@ const Leaderboards = () => {
   const handleClearLeaderboardsClick = () => {
     playSound();
     clearLeaderboards();
-  };  
+  };
+
+  const toggleExpandedScore = (index) => {
+    if (expandedScore === index) {
+      setExpandedScore(null);
+    } else {
+      setExpandedScore(index);
+    }
+  };
 
   return (
     <div className="leaderboards">
@@ -54,6 +55,7 @@ const Leaderboards = () => {
         {scores.map((score, index) => (
           <div key={index} className="score-entry">
             <div className="score-summary" onClick={() => toggleExpandedScore(index)}>
+              <span className="score-rank">#{index + 1}</span>
               <span className="score-name">{score.name}</span>
               <span className="score-date">{formatDate(score.date)}</span>
             </div>
@@ -78,7 +80,7 @@ const Leaderboards = () => {
         ))}
       </div>
       <div className="buttons">
-      <button className="clear-leaderboards-button" onClick={handleClearLeaderboardsClick}>Clear Leaderboards</button>
+        <button className="clear-leaderboards-button" onClick={handleClearLeaderboardsClick}>Clear Leaderboards</button>
         <br></br>
         <button className="back-menu-button" onClick={() => { playSound(); navigate('/'); }}>Back to Menu</button>
       </div>
