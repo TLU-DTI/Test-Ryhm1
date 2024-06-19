@@ -9,24 +9,26 @@
   justify-content: center;
   min-height: 100vh; /* Ensures the app takes full viewport height */
   width: 100vw; /* Ensures the app takes full viewport width */
-  background-image: url(/public/background.png);
+  background-image: url(/public/magi.jpg);
   background-repeat: no-repeat;
   background-size: cover; /* Ensures the image covers the entire background */
   background-position: center;
   overflow: hidden; /* Prevents scrolling */
 }
 
+
 .menu-box {
-  background-color: rgba(0, 0, 0, 0.5);
+  /*background-color: rgba(0, 0, 0, 0.5); */
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 /* Header container style */
-.app-header-container {
+
+ /* .app-header-container {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 20px;
   border-radius: 10px;
@@ -34,35 +36,44 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-}
+} */
 
 /* Header style */
 .app-header {
-  font-size: 24px;
-  color: #DDA0DD; /* Pastel purple */
-  background: linear-gradient(45deg, #DDA0DD, #FF69B4); /* Metallic purple/pink */
+  font-size: 44px;
+  color: #000000; /* Pastel purple */
+  background: linear-gradient(45deg, #924e92, #FF69B4); /* Metallic purple/pink */
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 15px rgba(104, 29, 104, 0.8), 0 0 20px rgba(190, 55, 123, 0.6); /* LED-like effect */
+  padding: 8px; /* Padding for spacing */
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor for interaction */
+  transition: transform 0.2s ease-in-out; /* Smooth transform on hover */
 }
 
-/* Button style */
 button {
-  font-family: Rajdhani;
-  font-size: 20px;
-  padding: 10px 20px;
-  margin-top: 20px;
-  background-color: #FF69B4; /* Pink */
-  border: none;
-  color: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
-  
+  font-family: 'Rajdhani', sans-serif; /* Font family */
+  font-size: 40px; /* Font size */
+  font-weight: 600; /* Bold font weight */
+  padding: 20px 20px; /* Padding for clickable area */
+  margin-top: 30px;
+  background-color: transparent; /* Transparent background */
+  border: none; /* No border */
+  color: linear-gradient(45deg, #924e92, #FF69B4);
+  /* Box shadow for depth */
+  border-radius: 6px; /* Slightly rounded corners */
+  cursor: pointer; /* Pointer cursor */
+  transition: color 0.3s ease, transform 0.2s ease-in-out; /* Smooth color change and transform */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); /* Text shadow for emphasis */
+  transform: translateY(1px); /* Pushes the button down slightly on click */
 }
 
 button:hover {
-  background-color: #DDA0DD;
+  color: #FF1493; /* Darker pink text color on hover */
+  transform: scale(1.1); /* Slightly scale up on hover */
+  
 }
-
+  
 h1 {
   margin: 0;
   font-size: 2em;

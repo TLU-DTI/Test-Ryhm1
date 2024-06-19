@@ -23,17 +23,9 @@ input, select {
   font-size: 20px;
   padding: 10px 20px;
   margin-top: 20px;
-  background-color: #FF69B4;
-  border: none;
-  color: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
 }
 
-.save-button:hover,
-.back-menu-button:hover {
-  background-color: #DDA0DD;
-}
+
 
 .save-confirmation {
   margin-top: 10px;

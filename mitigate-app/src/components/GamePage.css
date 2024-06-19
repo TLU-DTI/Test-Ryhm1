@@ -15,7 +15,7 @@ body {
 
 .back-menu-button, .end-round-button {
   padding: 1vh 2vw;
-  font-size: 2vh; /* Use vh for relative sizing */
+  font-size: 2.8vh; /* Use vh for relative sizing */
   cursor: pointer;
   border-radius: 1vh;
 }
@@ -24,11 +24,9 @@ body {
   font-size: 3vh; /* Use vh for relative sizing */
   flex-grow: 1;
   text-align: center;
-  color: #f7f5f5;
-  border: 0.2vh solid black; 
+  color: #f7f5f5; 
   padding: 1vh; 
-  border-radius: 1vh; 
-  background-color: rgba(0, 0, 0, 0.5); 
+
 }
 
 .cards-container {

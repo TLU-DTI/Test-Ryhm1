@@ -1,18 +1,18 @@
 .stats {
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.5);
+ 
   top: 8vh; /* Adjusted for a more centered position */
-  right: 8vw; /* Adjusted for a more centered position */
+  left: 8vw; /* Adjusted for left-side positioning */
   padding: 3vh; /* Increased padding for more space inside the stats box */
-  color: white;
+  color:  #ff0088;;
   font-weight: bold;
-  font-size: 2.5vh; /* Increased font size for better readability */
-  border: 2px solid #FF69B4;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+   /* Increased font size for better readability */
+ 
 }
 
+
 .stats div {
+  font-size: 3.25vh;
   margin-bottom: 1.5vh; /* Increased margin for better spacing between stats */
 }
 
