@@ -17,6 +17,7 @@ body {
   padding: 1vh 2vw;
   font-size: 2vh; /* Use vh for relative sizing */
   cursor: pointer;
+  border-radius: 1vh;
 }
 
 .round-counter {

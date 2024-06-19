@@ -2,6 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Settings.css';
 
+const clickSound = new Audio('/sounds/ui-click.mp3');
+
+const playSound = () => {
+  clickSound.play();
+};
+
 const Settings = () => {
   const [difficulty, setDifficulty] = useState('normal');
   const [name, setName] = useState('');
@@ -21,6 +27,7 @@ const Settings = () => {
     localStorage.setItem('difficulty', selectedDifficulty);
     setIsSaved(true);
     setTimeout(() => setIsSaved(false), 2000);
+    playSound();
   };
 
   const handleNameChange = (event) => {
@@ -29,11 +36,7 @@ const Settings = () => {
     localStorage.setItem('name', enteredName);
     setIsSaved(true);
     setTimeout(() => setIsSaved(false), 2000);
-  };
-
-  const handleSaveClick = () => {
-    setIsSaved(true);
-    setTimeout(() => setIsSaved(false), 2000);
+    playSound();
   };
 
   return (
@@ -53,7 +56,7 @@ const Settings = () => {
       </label>
       <br />
       {isSaved && <div className="save-confirmation">Settings Saved!</div>}
-      <button className="back-menu-button" onClick={() => navigate('/')}>Back to Menu</button>
+      <button className="back-menu-button" onClick={() => { navigate('/'); playSound(); }}>Back to Menu</button>
     </div>
   );
 };

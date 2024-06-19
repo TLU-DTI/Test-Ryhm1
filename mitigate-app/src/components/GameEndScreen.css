@@ -26,9 +26,15 @@
     margin-bottom: 20px;
   }
   
-  .back-menu-button {
+  /*.back-menu-button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
+    width: 19vh;
+    border-radius: 15%;
   }
-  
+
+  .end-round-button{
+    width: 17vh;
+    border-radius: 15%;
+  }*/

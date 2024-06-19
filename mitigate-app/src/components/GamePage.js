@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDrag, useDrop } from 'react-dnd';
 import Stats from './Stats';
@@ -8,6 +8,11 @@ import './GamePage.css';
 
 const ItemTypes = {
   CARD: 'card',
+};
+
+const playSound = () => {
+  const audio = new Audio('/sounds/ui-click.mp3');
+  audio.play();
 };
 
 const MitigationCard = ({ card, openModal, handleDrop }) => {
@@ -91,6 +96,9 @@ const GamePage = ({ cards }) => {
   const [tempStats, setTempStats] = useState({ scope: 0, quality: 0, time: 0, money: 0 });
   const [gameOver, setGameOver] = useState(false);
 
+  // Create a ref for the background audio
+  const audioRef = useRef(new Audio("sounds/Breath-within.mp3"));
+
   useEffect(() => {
     if (cards && cards.length > 0) {
       drawNewCards();
@@ -112,6 +120,21 @@ const GamePage = ({ cards }) => {
   useEffect(() => {
     console.log("Temp stats updated:", tempStats);
   }, [tempStats]);
+
+  // Start playing background audio 3 seconds after the component mounts
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      audioRef.current.loop = true;
+      audioRef.current.play();
+    }, 1000);
+
+    // Clear the timeout and stop the audio when the component unmounts
+    return () => {
+      clearTimeout(timer);
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    };
+  }, []);
 
   const getCardCounts = () => {
     if (round >= 1 && round <= 3) {
@@ -249,6 +272,11 @@ const GamePage = ({ cards }) => {
     setModalImage(null);
   };
 
+  const handleEndRoundClick = () => {
+    playSound();
+    endRound();
+  };
+
   if (gameOver) {
     return (
       <GameEndScreen finalStats={stats} mitigationsCount={playedMitigationCards.length} roundsPlayed={round} difficulty={difficulty} />
@@ -258,9 +286,9 @@ const GamePage = ({ cards }) => {
   return (
     <div className="game-page">
       <div className="game-header">
-        <button className="back-menu-button" onClick={() => navigate('/')}>Back to Menu</button>
+        <button className="back-menu-button" onClick={() => { playSound(); navigate('/'); }}>Back to Menu</button>
         <div className="round-counter">Round: {round}</div>
-        <button className="end-round-button" onClick={endRound}>End Round</button>
+        <button className="end-round-button" onClick={handleEndRoundClick}>End Round</button>
       </div>
       <Stats stats={stats} />
       <div className="cards-container">

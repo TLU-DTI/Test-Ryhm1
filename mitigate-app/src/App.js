@@ -10,6 +10,12 @@ import Leaderboards from './components/Leaderboards';
 import cardImages1 from './data/cardImages1';
 import cardImages2 from './data/cardImages2';
 
+const clickSound = new Audio('/sounds/ui-click.mp3');
+
+const playSound = () => {
+  clickSound.play();
+};
+
 const Header = ({ pathname }) => {
   const getHeaderText = () => {
     switch (pathname) {
@@ -33,9 +39,9 @@ const Header = ({ pathname }) => {
 
 const Menu = ({ shuffleCards, navigate }) => (
   <div className="menu-box">
-    <button onClick={shuffleCards}>New game</button>
-    <button onClick={() => navigate('/settings')}>Settings</button>
-    <button onClick={() => navigate('/leaderboards')}>Leaderboards</button>
+    <button onClick={() => { shuffleCards(); playSound(); }}>New game</button>
+    <button onClick={() => { navigate('/settings'); playSound(); }}>Settings</button>
+    <button onClick={() => { navigate('/leaderboards'); playSound(); }}>Leaderboards</button>
   </div>
 );
 

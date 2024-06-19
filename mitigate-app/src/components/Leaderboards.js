@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Leaderboards.css';
 
+const playSound = () => {
+  const audio = new Audio('/sounds/ui-click.mp3');
+  audio.play();
+};
+
 const Leaderboards = () => {
   const [scores, setScores] = useState([]);
   const [expandedScore, setExpandedScore] = useState(null);
@@ -38,6 +43,11 @@ const Leaderboards = () => {
     setScores([]);
   };
 
+  const handleClearLeaderboardsClick = () => {
+    playSound();
+    clearLeaderboards();
+  };  
+
   return (
     <div className="leaderboards">
       <div className="scores-list">
@@ -68,13 +78,9 @@ const Leaderboards = () => {
         ))}
       </div>
       <div className="buttons">
-        <button className="clear-leaderboards-button" onClick={clearLeaderboards}>
-          Clear Leaderboards
-        </button>
+      <button className="clear-leaderboards-button" onClick={handleClearLeaderboardsClick}>Clear Leaderboards</button>
         <br></br>
-        <button className="back-menu-button" onClick={() => navigate('/')}>
-          Back to Menu
-        </button>
+        <button className="back-menu-button" onClick={() => { playSound(); navigate('/'); }}>Back to Menu</button>
       </div>
     </div>
   );

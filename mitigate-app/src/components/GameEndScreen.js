@@ -2,6 +2,12 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './GameEndScreen.css';
 
+const clickSound = new Audio('/sounds/ui-click.mp3');
+
+const playSound = () => {
+  clickSound.play();
+};
+
 const GameEndScreen = ({ finalStats, mitigationsCount, roundsPlayed, difficulty }) => {
   const navigate = useNavigate();
 
@@ -48,7 +54,7 @@ const GameEndScreen = ({ finalStats, mitigationsCount, roundsPlayed, difficulty 
       <div className="difficulty">
         Difficulty: {difficulty}
       </div>
-      <button className="back-menu-button" onClick={() => navigate('/')}>Back to Menu</button>
+      <button className="back-menu-button" onClick={() => { navigate('/'); playSound(); }}>Back to Menu</button>
     </div>
   );
 };
