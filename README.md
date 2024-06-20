@@ -1,51 +1,64 @@
-# Ryhm1
-<h1>Mitigate Online</h1>
+# Mitigate Online
 
-<br>
-<h2>Pictures</h2>
-<br>
-<h2>How to run Unity app</h2>
-<ol>
-<strong>Step 1:</strong>
-</ol>
-<br>
-<h2>How to run React app</h2>
-<strong>To Run react app, please switch to branch Mitigate-React</strong>
+![Mitigate Online Screenshot](screenshots/mitigate_online_screenshot.png)
 
-<br>
-<h2>Description</h2>
-Mitigate is a physical card game, that is currently being made in web form. It is a card game teaching young entrepeneurs and business owners
-about the risks that may surface in the business world and how to <strong>mitigate</strong> them. Our goal with this project is to make a fully working game with a pleasing design. 
-The UI and cards are fully designed by us.
-<h3>Tallinn University School of Digital Technologies</h3>
-This was created as part of the summer internship course in the Informatics program at Tallinn University.
+## Description
+Mitigate Online is a digital adaptation of a physical card game designed to educate young entrepreneurs and business owners about various risks in the business world and how to effectively mitigate them. Our goal is to create a fully functional and aesthetically pleasing game that teaches the principles of risk management through engaging gameplay. The UI and cards are designed by our team to enhance the learning experience.
 
-<h2>Software used</h2>
-<li>Discord - communication</li>
-<li>ReactJS - Javascript framework</li>
-<li>Canva - <a href="https://www.canva.com/design/DAGHzrgkmQU/S8lpU7WQIY3Jz9kPI5O-QQ/edit">risk cards</a></li>
-<li>Canva - <a href="https://www.canva.com/design/DAGH0KPXCLM/hpNL3x3yqOB3j4lMMSY3SQ/edit"> mitigation cards</a></li>
-<li>Unity - game development  <br>
-<li>Figma - <a href="https://www.figma.com/design/uwN3eKdVG1K18j0c0wdXE6/Mitigate?node-id=0-1&t=dCoVEEmwbBbSax01-0">prototype</a></li>
+## Institution and Course
+This project was created as part of the summer internship course in the Informatics program at Tallinn University, specifically within the School of Digital Technologies.
 
-<h2> Goals</h2>
-The player will learn: <br>
-<li>Examples of real risks and their potential impact on project general objectives</li>
-<li>Examples of countermeasures and their impact on risks</li>
-<li>The iterative nature of risk management</li>
-<li>How is risk management integrated with the rest of the project management field of expertise?</li>
-<br>
-<h2>Contributors</h2>
-<li>Eerik Poopuu</li>
-<br>
-<li>Hannes Väster</li>
-<br>
-<li>Kristjan Petersell</li>
-<br>
-<li>Erik Brück</li>
-<br>
-<li>Kristjan Peedisson</li>
+## Technologies Used
+- **Discord**: Communication
+- **ReactJS**: JavaScript framework
+- **Canva**: Design tool for [risk cards](https://www.canva.com/design/DAGHzrgkmQU/S8lpU7WQIY3Jz9kPI5O-QQ/edit) and [mitigation cards](https://www.canva.com/design/DAGH0KPXCLM/hpNL3x3yqOB3j4lMMSY3SQ/edit)
+- **Unity**: Game development
+- **Figma**: Prototyping tool for [design](https://www.figma.com/design/uwN3eKdVG1K18j0c0wdXE6/Mitigate?node-id=0-1&t=dCoVEEmwbBbSax01-0)
+
+## Installation and Setup
+### Running the Unity App
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/mitigate-online.git
+    ```
+2. Navigate to the Unity project directory:
+    ```bash
+    cd mitigate-online/UnityProject
+    ```
+3. Open the project in Unity Editor.
+4. Build and run the project from Unity.
+
+### Running the React App
+1. Switch to the `Mitigate-React` branch:
+    ```bash
+    git checkout Mitigate-React
+    ```
+2. Navigate to the React app directory:
+    ```bash
+    cd mitigate-online/react-app
+    ```
+3. Install dependencies:
+    ```bash
+    npm install
+    ```
+4. Start the development server:
+    ```bash
+    npm start
+    ```
+
+## Learning Goals
+Players will learn:
+- Real-world examples of risks and their potential impacts on project objectives.
+- Effective countermeasures and their impacts on risks.
+- The iterative nature of risk management.
+- Integration of risk management within the broader context of project management.
+
+## Contributors
+- Eerik Poopuu
+- Hannes Väster
+- Kristjan Petersell
+- Erik Brück
+- Kristjan Peedisson
 
 ## License
-
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
