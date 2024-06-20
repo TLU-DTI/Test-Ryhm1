@@ -13,7 +13,7 @@ Mitigate Online is a digital adaptation of a physical card game designed to educ
 This project was created as part of the summer internship course in the Informatics program at Tallinn University, specifically within the School of Digital Technologies.
 
 ## Technologies Used
-- **Discord**: Communication
+- **Discord**: Communication between teammates
 - **ReactJS**: JavaScript framework
 - **Canva**: Design tool for [risk cards](https://www.canva.com/design/DAGHzrgkmQU/S8lpU7WQIY3Jz9kPI5O-QQ/edit) and [mitigation cards](https://www.canva.com/design/DAGH0KPXCLM/hpNL3x3yqOB3j4lMMSY3SQ/edit)
 - **Unity**: Game development
