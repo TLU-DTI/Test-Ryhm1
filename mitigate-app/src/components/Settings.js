@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Settings.css';
-
-const clickSound = new Audio('/sounds/ui-click.mp3');
-
-const playSound = () => {
-  clickSound.play();
-};
+import audioManager from './audioManager';
 
 const Settings = () => {
   const [difficulty, setDifficulty] = useState('normal');
   const [name, setName] = useState('');
-  const [sliderValue, setSliderValue] = useState(50); // State for slider value
+  const [sliderValue, setSliderValue] = useState(50);
   const [isSaved, setIsSaved] = useState(false);
   const navigate = useNavigate();
 
@@ -23,6 +18,14 @@ const Settings = () => {
     setName(savedName);
     setSliderValue(savedSliderValue !== null ? parseInt(savedSliderValue) : 50);
   }, []);
+
+  useEffect(() => {
+    audioManager.setVolume(sliderValue / 100);
+  }, [sliderValue]);
+
+  const playSound = () => {
+    audioManager.playUIClickSound();
+  };
 
   const handleDifficultyChange = (event) => {
     const selectedDifficulty = event.target.value;
@@ -43,10 +46,11 @@ const Settings = () => {
   };
 
   const handleSliderChange = (event) => {
-    const sliderVal = parseInt(event.target.value);
-    setSliderValue(sliderVal);
-    localStorage.setItem('sliderValue', sliderVal.toString());
-    playSound();
+    const sliderVal = parseInt(event.target.value, 10);
+    if (!isNaN(sliderVal) && isFinite(sliderVal)) {
+      setSliderValue(sliderVal);
+      localStorage.setItem('sliderValue', sliderVal.toString());
+    }
   };
 
   return (
@@ -59,28 +63,25 @@ const Settings = () => {
           <option value="hard">Hard</option>
         </select>
       </label>
-      
       <br />
       <label>
         Name:
         <input type="text" value={name} onChange={handleNameChange} />
       </label>
-      
       <br />
       <div className="slider-container">
         <label>
-          Music:
-          <input 
-            type="range" 
-            min="0" 
-            max="100" 
-            value={sliderValue} // Bind slider value
-            onChange={handleSliderChange} // Handle slider change
+          Master volume:
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value={sliderValue}
+            onChange={handleSliderChange}
             className="slider"
           />
         </label>
       </div>
-      
       <br />
       {isSaved && <div className="save-confirmation">Settings Saved!</div>}
       <button className="back-menu-button" onClick={() => { navigate('/'); playSound(); }}>Back to Menu</button>

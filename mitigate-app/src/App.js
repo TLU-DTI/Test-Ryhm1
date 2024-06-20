@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, useNavigate, useLocation } from
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import './App.css';
+import audioManager from './components/audioManager';
 
 import GamePage from './components/GamePage';
 import Settings from './components/Settings';
@@ -14,7 +15,7 @@ import cardImages2 from './data/cardImages2';
 const clickSound = new Audio('/sounds/ui-click.mp3');
 
 const playSound = () => {
-  clickSound.play();
+  audioManager.playUIClickSound();
 };
 
 const Header = ({ pathname }) => {
@@ -48,6 +49,7 @@ const Menu = ({ shuffleCards, navigate }) => (
     <button onClick={() => { navigate('/leaderboards'); playSound(); }}>Leaderboards</button>
   </div>
 );
+
 
 function App() {
   const [cards, setCards] = useState([]);

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Leaderboards.css';
+import audioManager from './audioManager';
 
 const playSound = () => {
-  const audio = new Audio('/sounds/ui-click.mp3');
-  audio.play();
+  audioManager.playUIClickSound();
 };
 
 const Leaderboards = () => {
@@ -82,7 +82,7 @@ const Leaderboards = () => {
       <div className="buttons">
         <button className="clear-leaderboards-button" onClick={handleClearLeaderboardsClick}>Clear Leaderboards</button>
         <br></br>
-        <button className="back-menu-button" onClick={() => { playSound(); navigate('/'); }}>Back to Menu</button>
+        <button className="back-menu-button" onClick={() => { audioManager.playUIClickSound(); navigate('/'); }}>Back to Menu</button>
       </div>
     </div>
   );

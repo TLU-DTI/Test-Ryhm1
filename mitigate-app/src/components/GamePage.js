@@ -6,13 +6,15 @@ import RiskLog from './RiskLog';
 import './Stats.css';
 import GameEndScreen from './GameEndScreen';
 import './GamePage.css';
+import audioManager from './audioManager';
 
 const ItemTypes = {
   CARD: 'card',
 };
 
-const playSound = () => {
-  const audio = new Audio('/sounds/ui-click.mp3');
+const playSound = (src) => {
+  const audio = new Audio(src);
+  audio.volume = audioManager.volume; // Set volume based on AudioManager
   audio.play();
 };
 
@@ -126,12 +128,21 @@ const GamePage = ({ cards }) => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      const savedSliderValue = parseInt(localStorage.getItem('sliderValue'));
-      audioRef.current.volume = savedSliderValue !== null ? savedSliderValue / 100 : 0.5; // Set the volume based on the saved slider value
+      const savedSliderValue = localStorage.getItem('sliderValue');
+      let volume = 0.5; // Default volume
+  
+      if (savedSliderValue !== null) {
+        const parsedVolume = parseFloat(savedSliderValue);
+        if (!isNaN(parsedVolume) && isFinite(parsedVolume)) {
+          volume = parsedVolume / 100;
+        }
+      }
+  
+      audioRef.current.volume = volume; // Set the volume based on the saved slider value
       audioRef.current.loop = true;
       audioRef.current.play();
     }, 1000);
-
+  
     // Clear the timeout and stop the audio when the component unmounts
     return () => {
       clearTimeout(timer);
@@ -250,6 +261,7 @@ const GamePage = ({ cards }) => {
               ...prevMitigationCards,
               mitigationCards.find(mitCard => mitCard.id === mitigationCardId) || card.droppedMitigationCard,
             ]);
+            playSound('/sounds/card-return.mp3'); // Play return sound
             return updatedCard;
           }
           return card;
@@ -273,6 +285,7 @@ const GamePage = ({ cards }) => {
           time: prevTempStats.time + droppedCard.attributes.time + riskCard.attributes.time,
           money: prevTempStats.money + droppedCard.attributes.money + riskCard.attributes.money
         }));
+        playSound('/sounds/card-place.mp3'); // Play place sound
       } else {
         console.error(`Mitigation card with id ${mitigationCardId} or risk card with id ${riskCardId} not found`);
       }
@@ -288,7 +301,7 @@ const GamePage = ({ cards }) => {
   };
 
   const handleEndRoundClick = () => {
-    playSound();
+    audioManager.playUIClickSound();
     endRound();
   };
 
@@ -301,7 +314,7 @@ const GamePage = ({ cards }) => {
   return (
     <div className="game-page">
       <div className="game-header">
-        <button className="back-menu-button" onClick={() => { playSound(); navigate('/'); }}>Back to Menu</button>
+        <button className="back-menu-button" onClick={() => { audioManager.playUIClickSound(); navigate('/'); }}>Back to Menu</button>
         <div className="round-counter">Round: {round}</div>
         <button className="end-round-button" onClick={handleEndRoundClick}>End Round</button>
       </div>
