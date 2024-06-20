@@ -1,6 +1,6 @@
 # Mitigate Online
 
-![Mitigate Online Screenshot](screenshots/Mitigate_game.png)
+![Mitigate Online Screenshot](Mitigate_game.png)
 
 ## Description
 Mitigate Online is a digital adaptation of a physical card game designed to educate young entrepreneurs and business owners about various risks in the business world and how to effectively mitigate them. Our goal is to create a fully functional and aesthetically pleasing game that teaches the principles of risk management through engaging gameplay. The UI and cards are designed by our team to enhance the learning experience.
