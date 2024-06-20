@@ -5,9 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    //private SceneLoader sceneLoader;
+    public void Start()
+    {
+        
+        
+        GameObject.Find("Audio").SetActive(false);
+        GameObject.Find("Settings").SetActive(false);
+    }
+
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneLoader sceneLoader = FindObjectOfType<SceneLoader>();
+        if (sceneLoader != null)
+        {
+            sceneLoader.LoadScene("GameScene");
+        }
+        else
+        {
+            Debug.LogError("SceneLoader not found in the scene.");
+        }
     }
 
     public void ExitGame()

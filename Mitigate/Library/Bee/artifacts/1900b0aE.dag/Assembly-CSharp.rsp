@@ -390,6 +390,8 @@
 "Assets/Scripts/NextTurn.cs"
 "Assets/Scripts/OptionsManager.cs"
 "Assets/Scripts/RiskCard.cs"
+"Assets/Scripts/SceneLoader.cs"
+"Assets/Scripts/SettingsUI.cs"
 -langversion:9.0
 /deterministic
 /optimize+

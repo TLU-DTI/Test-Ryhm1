@@ -11,9 +11,13 @@ public class GameManager : MonoBehaviour
     public Button nextTurnButton;
     public NextTurn nextTurnManager;
 
+    private SceneLoader sceneLoader;
+
     // Risk cards
     public RiskCard[] riskCards;
     public List<int> currentRiskCards;
+    public List<int> startPool;
+    public List<int> endPool;
     public List<int> riskCardsInPlay;
 
     // Action cards
@@ -43,7 +47,7 @@ public class GameManager : MonoBehaviour
     int delayTime;
     int delayMoney;
 
-    public int difficulty = 0; // 0 = rounds 1 - 3, 1 = rounds 4 - 6, 2 = rounds 7+ (for now)
+    public int difficulty = 0;
 
     public TextMeshProUGUI scopeText;
     public TextMeshProUGUI qualityText;
@@ -60,22 +64,23 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         GameScene = "GameScene";
+        sceneLoader = FindObjectOfType<SceneLoader>();
         gameOverUI.SetActive(false);
         InitializeCards();
         actionCardsInHand = new List<int>();
-        for (int i = 0; i < actionCardsOnField; i++)
+        for (int i = 0; i < 6; i++)
         {
             actionCardsInHand.Add(-1);
         }
         riskCardsInPlay = new List<int>();
-        for (int i = 0; i < riskCardsOnField; i++)
+        for (int i = 0; i < 5; i++)
         {
             riskCardsInPlay.Add(-1);
         }
+        RoundUpdater();
         generateRiskCards();
         generateActionCards();
         PlaceCardsOnField();
-        RoundUpdater();
         UpdateStatTexts();
     }
 
@@ -91,11 +96,22 @@ public class GameManager : MonoBehaviour
         {
             EndGame();
         }
+
+        if (round > 12)
+        {
+            round = 12;
+            UpdateStatTexts();
+        }
+
+        if (scope < 25 || quality < 25 || time < 25 || money < 25)
+        {
+            lost = true;
+        }
     }
 
     public void BackToMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        sceneLoader.LoadScene("MainMenu");
     }
 
     public void EndGame()
@@ -107,8 +123,38 @@ public class GameManager : MonoBehaviour
 
     public void RoundUpdater()
     {
+        
         round += 1;
         roundText.text = "Round: " + round;
+        if (round >= 4 && round < 7)
+        {
+            riskCardsOnField = 2;
+            actionCardsOnField = 3;
+            
+        } else if (round >= 7 && round < 9)
+        {
+            riskCardsOnField = 3;
+            actionCardsOnField = 4;
+        } else if (round >= 10 && round < 12)
+        {
+            riskCardsOnField = 4;
+            actionCardsOnField = 5;
+        } else if (round >= 12)
+        {
+            riskCardsOnField = 5;
+            actionCardsOnField = 6;
+        }
+    }
+
+    public void DIfficultyUpdater()
+    {
+        if (round == 10)
+        {
+            for (int i = 0; i < endPool.Count; i++)
+            {
+                currentRiskCards.Add(endPool[i]);
+            }
+        }
     }
 
     void UpdateStatTexts()
@@ -132,11 +178,12 @@ public class GameManager : MonoBehaviour
 
     public void NextTurn()
     {
+        DIfficultyUpdater();
+        RoundUpdater();
         ClearCardsAfterTurn();
         generateRiskCards();
         generateActionCards();
         PlaceCardsOnField();
-        RoundUpdater();
         UpdateStatTexts();
     }
 
@@ -205,14 +252,23 @@ public class GameManager : MonoBehaviour
 
     void InitializeCards()
     {
-        for (int i = 0; i < riskCards.Length; i++)
+        for (int i = 0; i < riskCards.Length - 3; i++)
         {
-            currentRiskCards.Add(i);
+            startPool.Add(i);
+        }
+        for (int i = 58; i < riskCards.Length; i++)
+        {
+            endPool.Add(i);
         }
         for (int i = 0; i < actionCards.Length; i++)
         {
             currentActionCards.Add(i);
         }
+        for (int i = 0; i < startPool.Count; i++)
+        {
+            currentRiskCards.Add(startPool[i]);
+        }
+        
     }
 
     public void generateRiskCards()
@@ -246,8 +302,8 @@ public class GameManager : MonoBehaviour
                     {
                         int randomIndex = UnityEngine.Random.Range(0, currentActionCards.Count);
                         actionCardsInHand[i] = currentActionCards[randomIndex];
-                        currentActionCards.Remove(actionCardsInHand[i]);
                         Debug.Log("Added " + currentActionCards[randomIndex] + " to actionCardsInHand[" + i + "] and removed it from currentActionCards[" + randomIndex + "]");
+                        currentActionCards.Remove(actionCardsInHand[i]);
                     }
                     else
                     {
@@ -260,7 +316,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartScene()
     {
-        SceneManager.LoadScene(GameScene);
+        sceneLoader.LoadScene("GameScene");
     }
 
     public void PlaceCardsOnField()
