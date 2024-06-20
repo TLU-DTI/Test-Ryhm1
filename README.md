@@ -49,6 +49,7 @@ This project was created as part of the summer internship course in the Informat
     ```bash
     npm start
     ```
+#### Node.js is required to run React JS
 
 ## Learning Goals
 Players will learn:
