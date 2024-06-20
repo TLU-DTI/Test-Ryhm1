@@ -11,7 +11,7 @@
 <h2>Description</h2>
 Mitigate Online is a digital adaptation of a physical card game designed to educate young entrepreneurs and business owners about various risks in the business world and how to effectively mitigate them. Our goal is to create a fully functional and aesthetically pleasing game that teaches the principles of risk management through engaging gameplay. The UI and cards are designed by our team to enhance the learning experience.
 <h3>Tallinn University School of Digital Technologies</h3>
-Created at Tallinn University.
+This project was created as part of the summer internship course in the Informatics program at Tallinn University, specifically within the School of Digital Technologies.<br>
 React JS ver 18.3.1
 
 <h2>Requirements</h2>
