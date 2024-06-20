@@ -84,7 +84,7 @@ const Settings = () => {
       </div>
       <br />
       {isSaved && <div className="save-confirmation">Settings Saved!</div>}
-      <button className="back-menu-button" onClick={() => { navigate('/'); playSound(); }}>Back to Menu</button>
+      <button className="back-menu-button-settings" onClick={() => { navigate('/'); playSound(); }}>Back to Menu</button>
     </div>
   );
 };

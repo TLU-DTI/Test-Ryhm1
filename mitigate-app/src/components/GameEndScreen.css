@@ -25,3 +25,25 @@
   .mitigations-count {
     margin-bottom: 20px;
   }
+
+  .back-menu-button-end{
+    font-family: Rajdhani;
+    font-size: 30px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: transparent;
+
+    color: #ff0088;
+    transition: background-color 0.3s ease;
+  }
+
+  .credits-button{
+    font-family: Rajdhani;
+    font-size: 30px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: transparent;
+
+    color: #ff0088;
+    transition: background-color 0.3s ease;
+  }

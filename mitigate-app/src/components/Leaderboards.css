@@ -45,7 +45,7 @@
     margin-bottom: 5px;
   }
   
-  .back-menu-button {
+  /*.back-menu-button {
     font-family: Rajdhani;
     font-size: 30px;
     padding: 10px 20px;
@@ -54,8 +54,16 @@
 
     color: #ff0088;
     transition: background-color 0.3s ease;
-  }
+  }*/
   
   .back-menu-button:hover {
     background-color: transparent;
   }  
+
+  .back-menu-button-leaderboard{
+    color: #ff0088;
+    font-family: Rajdhani;
+    font-size: 30px;
+    padding: 10px 20px;
+    margin-top: 20px;
+  }

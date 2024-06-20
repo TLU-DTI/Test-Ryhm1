@@ -54,7 +54,8 @@ const GameEndScreen = ({ finalStats, mitigationsCount, roundsPlayed, difficulty 
       <div className="difficulty">
         Difficulty: {difficulty}
       </div>
-      <button className="back-menu-button" onClick={() => { navigate('/'); playSound(); }}>Back to Menu</button>
+      <button className="back-menu-button-end" onClick={() => { navigate('/'); playSound(); }}>Back to Menu</button>
+      <button className="credits-button" onClick={() => { navigate('/credits'); playSound(); }}>Credits</button>
     </div>
   );
 };

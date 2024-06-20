@@ -1,0 +1,26 @@
+.credits {
+    padding: 20px;
+    text-align: center;
+    color: #FF69B4;
+    font-size: 20px;
+  }
+  
+  .credits h2 {
+    margin-bottom: 20px;
+    font-size: 40px;
+  }
+  
+  .credits ul {
+    list-style-type: none;
+    padding: 0;
+    font-size: 20px;
+  }
+  
+  .credits ul li {
+    margin: 5px 0;
+  } 
+
+  .credits-container{
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+  }

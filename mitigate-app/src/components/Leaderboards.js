@@ -82,7 +82,7 @@ const Leaderboards = () => {
       <div className="buttons">
         <button className="clear-leaderboards-button" onClick={handleClearLeaderboardsClick}>Clear Leaderboards</button>
         <br></br>
-        <button className="back-menu-button" onClick={() => { audioManager.playUIClickSound(); navigate('/'); }}>Back to Menu</button>
+        <button className="back-menu-button-leaderboard" onClick={() => { audioManager.playUIClickSound(); navigate('/'); }}>Back to Menu</button>
       </div>
     </div>
   );

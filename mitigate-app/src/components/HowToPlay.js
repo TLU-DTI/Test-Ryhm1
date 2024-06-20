@@ -38,7 +38,7 @@ const HowToPlay = () => {
           </div>
         </div>
       </div>
-      <button className="back-menu-button" onClick={() => { audioManager.playUIClickSound(); navigate('/'); }}>Back to Menu</button>
+      <button className="back-menu-button-how" onClick={() => { audioManager.playUIClickSound(); navigate('/'); }}>Back to Menu</button>
     </div>
   );
 };

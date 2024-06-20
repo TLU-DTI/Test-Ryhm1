@@ -2,7 +2,7 @@ class AudioManager {
   constructor() {
     this.backgroundMusic = null;
     this.uiClickSound = new Audio('/sounds/ui-click.mp3');
-    this.volume = 0.5; // Default volume (50%)
+    this.volume = 0.8; 
   }
 
   setVolume(volume) {

@@ -23,8 +23,18 @@ label {
   width: calc(100% - 20px); /* Arvestab siltide jaoks lisatud polstri ruumi (10px mõlemal küljel) */
 }
 
-.save-button,
-.back-menu-button {
+.back-menu-button-settings{
+  font-family: Rajdhani;
+    font-size: 30px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: transparent;
+
+    color: #ff0088;
+    transition: background-color 0.3s ease;
+}
+
+.save-button {
   font-family: Rajdhani;
   font-size: 20px;
   padding: 10px 20px;

@@ -9,6 +9,7 @@ import GamePage from './components/GamePage';
 import Settings from './components/Settings';
 import Leaderboards from './components/Leaderboards';
 import HowToPlay from './components/HowToPlay.js'; 
+import Credits from './components/Credits';  // Import Credits component
 import cardImages1 from './data/cardImages1';
 import cardImages2 from './data/cardImages2';
 
@@ -25,7 +26,7 @@ const Header = ({ pathname }) => {
         return 'Settings';
       case '/leaderboards':
         return 'Leaderboards';
-        case '/how-to-play': 
+      case '/how-to-play': 
         return 'How to Play';
       default:
         return 'Mitigate';
@@ -33,11 +34,13 @@ const Header = ({ pathname }) => {
   };
 
   return (
-    <div className="app-header-container">
-      <div className="app-header">
-        <h1>{getHeaderText()}</h1>
+    pathname !== '/credits' && (
+      <div className="app-header-container">
+        <div className="app-header">
+          <h1>{getHeaderText()}</h1>
+        </div>
       </div>
-    </div>
+    )
   );
 };
 
@@ -49,7 +52,6 @@ const Menu = ({ shuffleCards, navigate }) => (
     <button onClick={() => { navigate('/leaderboards'); playSound(); }}>Leaderboards</button>
   </div>
 );
-
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -76,6 +78,7 @@ function App() {
           <Route path="/leaderboards" element={<Leaderboards />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/how-to-play" element={<HowToPlay />} />
+          <Route path="/credits" element={<Credits />} />  {/* Add Credits route */}
         </Routes>
       </div>
     </DndProvider>

@@ -20,6 +20,10 @@ body {
   border-radius: 1vh;
 }
 
+.end-round-button{
+  
+}
+
 .round-counter {
   font-size: 3vh;
   flex-grow: 1;

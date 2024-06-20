@@ -102,3 +102,14 @@
     bottom: 10px; /* Adjusted position from bottom for smaller screens */
   }
 }
+
+.back-menu-button-how{
+  font-family: Rajdhani;
+    font-size: 30px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: transparent;
+
+    color: #ff0088;
+    transition: background-color 0.3s ease;
+}
