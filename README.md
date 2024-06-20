@@ -9,9 +9,7 @@
 
 <br>
 <h2>Description</h2>
-Mitigate is a physical card game, that is currently being made in web form via React JS. It is a card game teaching young entrepeneurs and business owners
-about the risks that may surface in the business world and how to <strong>mitigate</strong> them. Our goal with this project is to make a fully working game with a pleasing design. 
-The UI and cards are fully designed by us.
+Mitigate Online is a digital adaptation of a physical card game designed to educate young entrepreneurs and business owners about various risks in the business world and how to effectively mitigate them. Our goal is to create a fully functional and aesthetically pleasing game that teaches the principles of risk management through engaging gameplay. The UI and cards are designed by our team to enhance the learning experience.
 <h3>Tallinn University School of Digital Technologies</h3>
 Created at Tallinn University.
 React JS ver 18.3.1
