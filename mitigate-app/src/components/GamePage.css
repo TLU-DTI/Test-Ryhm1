@@ -15,10 +15,9 @@ body {
 
 .back-menu-button, .end-round-button {
   padding: 1vh 2vw;
-  font-size: 4vh;
+  font-size: 2.8vh;
   cursor: pointer;
   border-radius: 1vh;
-  color: #FF1493;
 }
 
 .end-round-button{
