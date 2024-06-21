@@ -65,11 +65,12 @@ button {
   cursor: pointer; /* Pointer cursor */
   transition: color 0.3s ease, transform 0.2s ease-in-out; /* Smooth color change and transform */
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); /* Text shadow for emphasis */
-  transform: translateY(1px); /* Pushes the button down slightly on click */
+  transform: translateY(1px);
+  color: #FF1493 /* Pushes the button down slightly on click */
 }
 
 button:hover {
-  color: #FF1493; /* Darker pink text color on hover */
+  color: #fd098b; /* Darker pink text color on hover */
   transform: scale(1.1); /* Slightly scale up on hover */
   
 }

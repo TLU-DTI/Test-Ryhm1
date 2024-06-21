@@ -15,14 +15,11 @@ body {
 
 .back-menu-button, .end-round-button {
   padding: 1vh 2vw;
-  font-size: 2.8vh;
+  font-size: 5vh;
   cursor: pointer;
   border-radius: 1vh;
 }
 
-.end-round-button{
-  
-}
 
 .round-counter {
   font-size: 3vh;
